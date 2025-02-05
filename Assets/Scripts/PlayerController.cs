@@ -18,12 +18,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movimiento = _playerInput.actions["Movimientos"].ReadValue<Vector2>();
-
         
+        
+
+    }
+    private void FixedUpdate()
+    {
+        movimiento = _playerInput.actions["Movimientos"].ReadValue<Vector2>();        
 
         transform.Translate(movimiento.x *Time.deltaTime,movimiento.y * Time.deltaTime,0); 
-        
-
     }
 }
