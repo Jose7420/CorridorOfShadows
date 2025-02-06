@@ -18,7 +18,7 @@
                     "name": "Jump",
                     "type": "Value",
                     "id": "449e4f42-5908-44ef-8891-19810577a85b",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Integer",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true

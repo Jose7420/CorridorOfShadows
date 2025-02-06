@@ -13,7 +13,7 @@ public class ControllerCamare : MonoBehaviour
     {
         cam = GetComponent<Camera>();
         player = GameObject.FindGameObjectWithTag("Player");
-        Debug.Log($"La posicion de la camara es {cam.transform.position}");
+       // Debug.Log($"La posicion de la camara es {cam.transform.position}");
         
     }
 
