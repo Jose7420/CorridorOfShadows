@@ -6,11 +6,11 @@ using UnityEngine;
 public class DardoController : MonoBehaviour
 {
 
-    [SerializeField] private Transform circle;
+   // [SerializeField] private Transform circle;
 
     private void Start()
     {
-        circle= GetComponent<Transform>();
+      //  circle= GetComponent<Transform>();
     }
 
    
