@@ -21,7 +21,8 @@ public class ControllerCamare : MonoBehaviour
     void Update()
     {
         if (player == null) return;
-        if (player.transform.position.x >= -0.87&& player.transform.position.x <= 58.5)
+
+        if (player.transform.position.x >= -4.897751 && player.transform.position.x <= 58.5)
         {
             transform.position = new Vector3(player.transform.position.x, transform.position.y, transform.position.z);
         }

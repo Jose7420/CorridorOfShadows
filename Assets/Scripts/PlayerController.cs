@@ -8,29 +8,31 @@ public class PlayerController : MonoBehaviour
 {
     PlayerInput _playerInput;
     Rigidbody2D _RigidbodyPlayer;
-    private Vector2 movimiento;
+    private Vector2 direction;
     private float jump;
 
-    [SerializeField] float _speed = 10f;
-    [SerializeField] float _jumpForce = 0f;
+    [SerializeField] float _speed;
+    [SerializeField] float _jumpForce;
     private bool _IsGround;
 
     [SerializeField] private float minX = -17f;
-    [SerializeField] private float maxX = 10f;
+    [SerializeField] private float maxX = 74f;
 
     // Start is called before the first frame update
     void Start()
     {
         _playerInput = GetComponent<PlayerInput>();
         _RigidbodyPlayer = GetComponent<Rigidbody2D>();
-        _speed = 10f;
+        // _speed = 10f;
+        _speed = 500;
+        _jumpForce = 10f;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        movimiento = _playerInput.actions["Movimientos"].ReadValue<Vector2>();
+        direction = _playerInput.actions["Movimientos"].ReadValue<Vector2>();
         jump = _playerInput.actions["Jump"].ReadValue<float>();
 
     }
@@ -38,7 +40,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
 
-        Mover();
+        Mover(direction.x * _speed * Time.fixedDeltaTime);
         Jump();
     }
 
@@ -54,12 +56,13 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
 
-        _jumpForce = 0;
+        // _jumpForce = 0;
 
+        // Comprobar si esta en el suelo y el salto es hacia arriba
         if (jump == 1 && _IsGround)
         {
             _IsGround = false;
-            _jumpForce = 10f;
+            // _jumpForce = 10f;
 
             _RigidbodyPlayer.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
             Debug.Log("Dentro del condicional " + _IsGround);
@@ -67,10 +70,13 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void Mover()
+    private void Mover(float mover)
     {
 
-        _RigidbodyPlayer.transform.Translate(Mathf.Clamp(movimiento.x * _speed * Time.fixedDeltaTime, minX, maxX), 0, 0);
+        _RigidbodyPlayer.velocity = new Vector2(mover, _RigidbodyPlayer.velocity.y);
+
+        _RigidbodyPlayer.position = new Vector2(Mathf.Clamp(_RigidbodyPlayer.position.x, minX, maxX),
+            _RigidbodyPlayer.position.y);
     }
 
 }
