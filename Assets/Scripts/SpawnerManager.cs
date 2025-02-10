@@ -49,7 +49,7 @@ public class SpawnerManager : MonoBehaviour
                 positionY =Random.Range(-2.8f, 4.84f);
                 positionX = Random.Range(transform.position.x, transform.position.x + offset);
                 index= Random.Range(0,enemigos.Length);
-      
+
                 Instantiate(enemigos[index], new Vector3(transform.position.x,positionY, transform.position.z), enemigos[index].transform.rotation);
                
             }
