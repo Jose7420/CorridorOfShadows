@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _jumpForce;
     private bool _IsGround;
 
-    [SerializeField] private float minX = -17f;
+   [SerializeField] private float minX = -15.7f;
     [SerializeField] private float maxX = 74f;
 
     // Start is called before the first frame update
@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
         _RigidbodyPlayer.velocity = new Vector2(mover, _RigidbodyPlayer.velocity.y);
 
-        _RigidbodyPlayer.position = new Vector2(Mathf.Clamp(_RigidbodyPlayer.position.x, minX, maxX),
+        _RigidbodyPlayer.position = new Vector2(Mathf.Clamp(_RigidbodyPlayer.position.x, minX*1f, maxX),
             _RigidbodyPlayer.position.y);
     }
 
