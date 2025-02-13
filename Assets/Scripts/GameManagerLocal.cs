@@ -57,4 +57,6 @@ public class GameManagerLocal : MonoBehaviour
         UpdatePoints();
     }
 
+   
+
 }
