@@ -8,6 +8,10 @@ public class MoveSaw : MonoBehaviour
 {
     
     [SerializeField] private float speed = -0.8f;
+
+    private  bool iSRotate = false;
+
+    public  bool IsSierraRotate {  get;  set; }
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +21,11 @@ public class MoveSaw : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0,0,speed);
+        if (iSRotate)
+        {
+            transform.Rotate(0, 0, speed);
+        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -30,6 +38,8 @@ public class MoveSaw : MonoBehaviour
             if (transform.parent != null)
             {
                 transform.parent.gameObject.SetActive(false);
+                GameManagerLocal.Instance.removePoints(5);
+              
             }
         }
     }
