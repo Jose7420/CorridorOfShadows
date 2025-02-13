@@ -1,17 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using TMPro;
 using Mirror;
+using TMPro;
+using UnityEngine;
 
-public class Score : NetworkBehaviour
+public class GameManagerLocal : NetworkBehaviour
 {
-    /*
-    [SerializeField] private TextMeshProUGUI _TextMeshProUGUI;
-     
+    public PlayerInfo _PlayerInfo;
     private int _Score;
 
-    public PlayerInfo _PlayerInfo;
+    [SerializeField] private TextMeshProUGUI _TextMeshProUGUI;
+    
+    public static GameManagerLocal Instance;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else { Destroy(Instance);
+        }
+    }
+    
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +33,8 @@ public class Score : NetworkBehaviour
     {
         _Score++;
         _TextMeshProUGUI.text = "Score: " + _Score.ToString();
-        CmdUpdatePlayerScore(_Score);
+
+         CmdUpdatePlayerScore(_Score);
     }
 
     [Command(requiresAuthority = false)]
@@ -32,5 +43,4 @@ public class Score : NetworkBehaviour
         sender.identity.GetComponent<PlayerInfo>().Score = newScore;
     }
 
-    */
 }

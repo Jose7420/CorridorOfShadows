@@ -8,9 +8,12 @@ public class MoveSaw : MonoBehaviour
 {
     
     [SerializeField] private float speed = -0.8f;
+  // [SerializeField] private GameManagerLocal _gameManagerLocal;
+    
     // Start is called before the first frame update
     void Start()
     {
+       //_gameManagerLocal = GameObject.Find("GameManagerLocal").GetComponent<GameManagerLocal>();
         speed = -0.8f;
     }
 
@@ -30,6 +33,9 @@ public class MoveSaw : MonoBehaviour
             if (transform.parent != null)
             {
                 transform.parent.gameObject.SetActive(false);
+                //_gameManagerLocal.Points();
+                GameManagerLocal.Instance.Points();
+               
             }
         }
     }
