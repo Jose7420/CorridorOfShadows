@@ -27,11 +27,11 @@ public class GameManagerLocal : MonoBehaviour
     void Start()
     {
         _TextMeshProUGUI = GameObject.Find("Puntos").GetComponent<TextMeshProUGUI>();
-        UpdatePoints();
+        UpdateScore();
     }
 
 
-    public void UpdatePoints()
+    public void UpdateScore()
     {
         _TextMeshProUGUI.text = "Score: " + _Score.ToString();
     }
@@ -48,15 +48,20 @@ public class GameManagerLocal : MonoBehaviour
     public void addPoints(int points)
     {
         _Score += points;
-        UpdatePoints();
+        UpdateScore();
       
     }
 
+    
     public void removePoints(int points) { 
         _Score -= points;
-        UpdatePoints();
+        UpdateScore();
     }
 
+    public int getScore()
+    {
+        return _Score;
+    }
    
 
 }

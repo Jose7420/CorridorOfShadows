@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         _IsGround = collision.gameObject.CompareTag("Ground");
-        Debug.Log($"Dentro del collision {_IsGround}");
+//        Debug.Log($"Dentro del collision {_IsGround}");
     }
 
 

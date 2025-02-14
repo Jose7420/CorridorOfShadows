@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TrampasContoller : MonoBehaviour
@@ -15,11 +16,19 @@ public class TrampasContoller : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-     Debug.Log(collision.tag);
+//     Debug.Log(collision.tag);
         if (collision.CompareTag("Player"))
         {
               sierra.SetActive(true);  
+              MoveSaw.IsRotate = true;
                
         }
     }
+
+   private void  OnTriggerExit2D(Collider2D collision)
+    {
+        sierra.SetActive(false);    
+    }
+    
+    
 }
