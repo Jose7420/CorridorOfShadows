@@ -25,10 +25,10 @@ public class TrampasContoller : MonoBehaviour
         }
     }
 
-   private void  OnTriggerExit2D(Collider2D collision)
-    {
-        sierra.SetActive(false);    
-    }
+   //private void  OnTriggerExit2D(Collider2D collision)
+   // {
+   //     sierra.SetActive(false);    
+   // }
     
     
 }

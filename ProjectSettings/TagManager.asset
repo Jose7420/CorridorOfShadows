@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Sierra
   - Speartraps
+  - Lance
   layers:
   - Default
   - TransparentFX

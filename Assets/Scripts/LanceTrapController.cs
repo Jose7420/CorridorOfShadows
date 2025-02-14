@@ -7,20 +7,27 @@ using UnityEngine;
 public class LanceTrapController : MonoBehaviour
 {
 
-  [SerializeField] private GameObject traps;
+    [SerializeField] private GameObject traps;
 
-  private void Start()
-  {
-    traps= GameObject.FindGameObjectWithTag("Speartraps");
-    traps.SetActive(false);
-  }
-
-  private void OnTriggerEnter(Collider other)
-  {
-    Debug.Log(other.gameObject.tag);
-    if (other.gameObject.CompareTag("Player"))
+    private void Start()
     {
-      traps.SetActive(true);
+        traps = GameObject.FindGameObjectWithTag("Lance");
+        traps.SetActive(false);
     }
-  }
+    private void OnTriggerEnter2D(Collider2D other)
+
+    {
+        Debug.Log(other.gameObject.tag);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            traps.SetActive(true);
+        }
+    }
+
+
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        traps.SetActive(false);
+    }
 }

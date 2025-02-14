@@ -34,6 +34,7 @@ public class MoveSaw : MonoBehaviour
         if (iSRotate)
         {
             transform.Rotate(0, 0, speed);
+            
         }
         
     }
