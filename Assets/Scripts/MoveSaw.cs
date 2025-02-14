@@ -7,8 +7,8 @@ using UnityEngine.Animations;
 
 public class MoveSaw : MonoBehaviour
 {
-    
-    [SerializeField] private float speed = -0.8f;
+
+    [SerializeField] private float speed = 200f;//-0.8f;
 
     private  static bool iSRotate = false;
 
@@ -25,7 +25,7 @@ public class MoveSaw : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = -0.8f;
+        speed = 200f;//-0.8f;
     }
 
     // Update is called once per frame
@@ -33,7 +33,8 @@ public class MoveSaw : MonoBehaviour
     {
         if (iSRotate)
         {
-            transform.Rotate(0, 0, speed);
+           //transform.Rotate(0, 0, speed);
+           transform.rotation = Quaternion.Euler(0, 0, speed * Time.deltaTime) * transform.rotation;
             
         }
         

@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     {
 
         Mover(direction.x * _speed * Time.fixedDeltaTime);
-        Jump();
+       
     }
 
 
@@ -75,8 +75,11 @@ public class PlayerController : MonoBehaviour
 
         _RigidbodyPlayer.velocity = new Vector2(mover, _RigidbodyPlayer.velocity.y);
 
-        _RigidbodyPlayer.position = new Vector2(Mathf.Clamp(_RigidbodyPlayer.position.x, minX*1f, maxX),
+        _RigidbodyPlayer.position = new Vector2(Mathf.Clamp(_RigidbodyPlayer.position.x, minX * 1f, maxX),
             _RigidbodyPlayer.position.y);
+        Jump();
+
+
     }
 
 }

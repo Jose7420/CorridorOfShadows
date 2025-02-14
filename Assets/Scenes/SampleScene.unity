@@ -1902,7 +1902,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &777230330
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22190,6 +22190,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CircularSawTrap
       objectReference: {fileID: 0}
+    - target: {fileID: 4410220193542494494, guid: 38650013cde096c4ca10aa7721c80604, type: 3}
+      propertyPath: speed
+      value: -100
+      objectReference: {fileID: 0}
     - target: {fileID: 7401388780157794580, guid: 38650013cde096c4ca10aa7721c80604, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -22229,6 +22233,10 @@ PrefabInstance:
     - target: {fileID: 7401388780157794580, guid: 38650013cde096c4ca10aa7721c80604, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8506999166896077589, guid: 38650013cde096c4ca10aa7721c80604, type: 3}
+      propertyPath: speed
+      value: -100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
