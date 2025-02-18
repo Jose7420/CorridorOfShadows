@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
             // _jumpForce = 10f;
 
             _RigidbodyPlayer.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
-            Debug.Log("Dentro del condicional " + _IsGround);
+           // Debug.Log("Dentro del condicional " + _IsGround);
         }
 
     }

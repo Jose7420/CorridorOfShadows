@@ -25,4 +25,12 @@ public class EnemyController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        GameManagerLocal.Instance.addPoints(5);
+        Destroy(gameObject,0.1f);
+    }
+
+  
 }
