@@ -14,14 +14,17 @@ public class DardoController : MonoBehaviour
     }
 
    
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
    {
       if (collision.gameObject.CompareTag("Player"))
       {
         // Destroy(collision.gameObject);
-         Destroy(gameObject);
+         //Destroy(gameObject);
          GameManagerLocal.Instance.removePoints(2);
+         
+         collision.transform.position = new Vector2(transform.position.x - 5, collision.transform.position.y);
       }
       Debug.Log(collision.gameObject.name);
    }
-}
+
+ }
