@@ -23,4 +23,7 @@ public class ContollerCircle : MonoBehaviour
         Instantiate(dardo, transform.position, transform.rotation);
       
     }
+    
+    
+    
 }
