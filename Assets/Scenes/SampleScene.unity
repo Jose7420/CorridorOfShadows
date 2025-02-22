@@ -696,7 +696,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &99097984
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -5709,6 +5709,7 @@ GameObject:
   - component: {fileID: 251521710}
   - component: {fileID: 251521713}
   - component: {fileID: 251521712}
+  - component: {fileID: 251521714}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5757,7 +5758,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: 1183081586, guid: 8c3a4edbe1330a346b2e85357485f152, type: 3}
   m_Color: {r: 0.3962264, g: 0.3457636, b: 0.3457636, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5777,8 +5778,8 @@ Transform:
   m_GameObject: {fileID: 251521707}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.21, y: -1.7, z: 1}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalPosition: {x: -11.6979, y: -0.4084, z: 1}
+  m_LocalScale: {x: 0.6864241, y: 0.6080087, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 14920547}
@@ -5862,8 +5863,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.99999994, y: 2}
+  m_Offset: {x: 0.29937294, y: -0.15362957}
+  m_Size: {x: 3.6671355, y: 11.893677}
   m_Direction: 0
 --- !u!50 &251521713
 Rigidbody2D:
@@ -5892,6 +5893,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &251521714
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251521707}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a0300f39fc81f0d4799ecf377735051f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &265589392 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2881003653158403940, guid: 87db8c8af157c3f4b965917a44dad25a, type: 3}
