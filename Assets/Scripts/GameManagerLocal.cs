@@ -7,9 +7,10 @@ public class GameManagerLocal : MonoBehaviour
 {
     private int _Score;
 
-    [SerializeField] private TextMeshProUGUI _TextMeshProUGUI;
+    [SerializeField] private TextMeshProUGUI _scoreText;
 
-    public static GameManagerLocal Instance;
+    public static GameManagerLocal Instance { get; private set; }
+
     private void Awake()
     {
         if (Instance == null)
@@ -18,7 +19,7 @@ public class GameManagerLocal : MonoBehaviour
         }
         else
         {
-            Destroy(Instance);
+            Destroy(gameObject);
         }
     }
 
@@ -26,14 +27,14 @@ public class GameManagerLocal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _TextMeshProUGUI = GameObject.Find("Puntos").GetComponent<TextMeshProUGUI>();
+        _scoreText = GameObject.Find("Puntos").GetComponent<TextMeshProUGUI>();
         UpdateScore();
     }
 
 
     public void UpdateScore()
     {
-        _TextMeshProUGUI.text = "Score: " + _Score.ToString();
+        _scoreText.text = "Score: " + _Score.ToString();
     }
 
     /*
@@ -45,7 +46,7 @@ public class GameManagerLocal : MonoBehaviour
      }
     */
 
-    public void addPoints(int points)
+    public void AddPoints(int points)
     {
         _Score += points;
         UpdateScore();
@@ -53,12 +54,12 @@ public class GameManagerLocal : MonoBehaviour
     }
 
     
-    public void removePoints(int points) { 
+    public void RemovePoints(int points) { 
         _Score -= points;
         UpdateScore();
     }
 
-    public int getScore()
+    public int GetScore()
     {
         return _Score;
     }

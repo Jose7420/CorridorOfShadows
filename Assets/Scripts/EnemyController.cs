@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    private Rigidbody2D _RigidbodyPlayer;
+    private Rigidbody2D _rigidbodyPlayer;
 
     [Header("Velocidad del enemigo")] [SerializeField]
     private float speed = 50f;
@@ -12,13 +12,13 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _RigidbodyPlayer = GetComponent<Rigidbody2D>();
+        _rigidbodyPlayer = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        _RigidbodyPlayer.AddForce(Vector2.left * speed * Time.deltaTime, ForceMode2D.Impulse);
+        _rigidbodyPlayer.AddForce( speed * Time.deltaTime * Vector2.left , ForceMode2D.Impulse);
 
         if (transform.position.x <= -17.33)
         {
@@ -28,7 +28,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameManagerLocal.Instance.addPoints(5);
+        GameManagerLocal.Instance.AddPoints(5);
         Destroy(gameObject,0.1f);
     }
 

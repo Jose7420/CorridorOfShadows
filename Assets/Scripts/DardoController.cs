@@ -20,7 +20,7 @@ public class DardoController : MonoBehaviour
       {
         // Destroy(collision.gameObject);
          //Destroy(gameObject);
-         GameManagerLocal.Instance.removePoints(2);
+         GameManagerLocal.Instance.RemovePoints(2);
          
          collision.transform.position = new Vector2(transform.position.x - 5, collision.transform.position.y);
       }

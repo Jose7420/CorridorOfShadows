@@ -15,7 +15,7 @@ public class LanceController : MonoBehaviour
             if (transform.parent != null)
             {
                 transform.parent.gameObject.SetActive(false);
-                GameManagerLocal.Instance.removePoints(5);
+                GameManagerLocal.Instance.RemovePoints(5);
 
             }
         }

@@ -7,15 +7,15 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     private PlayerInput _playerInput;
-    private Rigidbody2D _RigidbodyPlayer;
-    private Vector2 direction;
-    private float jump;
+    private Rigidbody2D _rigidbodyPlayer;
+    private Vector2 _direction;
+    private float _jump;
 
-    [SerializeField] private float _speed;
-    [SerializeField] private float _jumpForce;
-    private bool _IsGround;
-    private SpriteRenderer spriteRenderer;
-    private Animator animator;
+    [SerializeField] private float _speed = 500;
+    [SerializeField] private float _jumpForce = 10f;
+    private bool _isGrounded;
+    private SpriteRenderer _spriteRenderer;
+    private Animator _animator;
 
     [SerializeField] private float minX = -15.7f;
     [SerializeField] private float maxX = 114.5f;//74f;
@@ -25,77 +25,70 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _playerInput = GetComponent<PlayerInput>();
-        _RigidbodyPlayer = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
-
-        // _speed = 10f;
-        _speed = 500;
-        _jumpForce = 10f;
+        _rigidbodyPlayer = GetComponent<Rigidbody2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        direction = _playerInput.actions["Movimientos"].ReadValue<Vector2>();
-        jump = _playerInput.actions["Jump"].ReadValue<float>();
+        _direction = _playerInput.actions["Movimientos"].ReadValue<Vector2>();
+        _jump = _playerInput.actions["Jump"].ReadValue<float>();
 
     }
 
     private void FixedUpdate()
     {
-        Mover(direction.x * _speed * Time.fixedDeltaTime);
+        MovePlayer(_direction.x * _speed * Time.fixedDeltaTime);
     }
 
-    #region Collisiones
+    #region Colisiones
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        _IsGround = collision.gameObject.CompareTag("Ground");
+        _isGrounded = collision.gameObject.CompareTag("Ground");
 
     }
     #endregion
 
-    #region Movimiento player
+    #region Movimiento del player
 
     /// <summary>
-    /// Mover al player cuando se pulse los botones de direcion
+    /// Mueve al Player cuando se pulsan los botones de dirección y este está en el suelo.
     /// </summary>
-    /// <param name="mover"></param>    
-    private void Mover(float mover)
+    /// <param name="move">El valor del movimiento horizontal.</param>    
+    private void MovePlayer(float move)
     {
-        if (_IsGround)
+        if (_isGrounded)
         {
-            ChangeFlip(direction.x);
-            animator.SetBool("isStatic", IsStatic(direction.x));
+            FlipSprite(_direction.x);
+            _animator.SetBool("isStatic", IsPlayerStatic(_direction.x));
 
-            _RigidbodyPlayer.velocity = new Vector2(mover, _RigidbodyPlayer.velocity.y);
-
-            _RigidbodyPlayer.position = new Vector2(Mathf.Clamp(_RigidbodyPlayer.position.x, minX * 1f, maxX),
-                _RigidbodyPlayer.position.y);
+            _rigidbodyPlayer.velocity = new Vector2(move, _rigidbodyPlayer.velocity.y);
+            _rigidbodyPlayer.position = new Vector2(Mathf.Clamp(_rigidbodyPlayer.position.x, minX * 1f, maxX), 
+                                                     _rigidbodyPlayer.position.y);
         }
-        Jump();
+        JumpPlayer();
 
 
     }
 
 
     /// <summary>
-    /// Comprobar si se a pulsado la tecla o el boton de salto
-    /// y si esta en tierra para saltar
+    /// Comprueba si se a pulsado la tecla o el botón de salto
+    /// y si el Player está en el suelo para poder saltar.
     /// </summary>
-    private void Jump()
+    private void JumpPlayer()
     {
 
-        // Comprobar si esta en el suelo y el salto es hacia arriba
-        if (jump == 1 && _IsGround)
+        if (_jump == 1 && _isGrounded)
         {
-            _IsGround = false;
-            // _jumpForce = 10f;
+            _isGrounded = false;
 
-            _RigidbodyPlayer.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
-            animator.SetBool("isStatic", IsStatic(direction.y));
-            // Debug.Log("Dentro del condicional " + _IsGround);
+            _rigidbodyPlayer.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+            _animator.SetBool("isStatic", IsPlayerStatic(_direction.y));
+             Debug.Log("Dentro del condicional " + _isGrounded);
         }
 
     }
@@ -104,28 +97,26 @@ public class PlayerController : MonoBehaviour
     #region Cambiar de flip
 
     /// <summary>
-    /// Cambiar la direccion del sprite
-    /// se manda la direcion por parametros el valor de tipo float donde quiere que mire el sprite
+    ///  Cambia la dirección del sprite si se está moviendo.
     /// </summary>
-    /// <param name="direction"></param>
-    private void ChangeFlip(float direction)
+    /// <param name="direction">La dirección en la que el sprite se está moviendo.</param>
+    private void FlipSprite(float direction)
     {
 
         if (direction == 0) return;
-        spriteRenderer.flipX = direction < 0;
+        _spriteRenderer.flipX = direction < 0;
 
     }
     #endregion
 
-    #region Ver el estado istatic
+    #region Ver el estado isStatic
 
     /// <summary>
-    /// Comprobar si el player esta parado
-    /// se mando por parametro la direcion si es cero devuelve true.
+    /// Comprueba si el player está parado    
     /// </summary>
-    /// <param name="direction"></param>
-    /// <returns></returns>
-    private bool IsStatic(float direction)
+    /// <param name="direction">La dirección del movimiento del player</param>
+    /// <returns>True si el player esta parado; de lo contario, False.</returns>
+    private bool IsPlayerStatic(float direction)
     {
         return direction == 0;
 
