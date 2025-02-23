@@ -6,19 +6,19 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    PlayerInput _playerInput;
-    Rigidbody2D _RigidbodyPlayer;
+    private PlayerInput _playerInput;
+    private Rigidbody2D _RigidbodyPlayer;
     private Vector2 direction;
     private float jump;
 
-    [SerializeField] float _speed;
-    [SerializeField] float _jumpForce;
+    [SerializeField] private float _speed;
+    [SerializeField] private float _jumpForce;
     private bool _IsGround;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
     [SerializeField] private float minX = -15.7f;
-    [SerializeField] private float maxX = 74f;
+    [SerializeField] private float maxX = 114.5f;//74f;
 
 
     // Start is called before the first frame update
