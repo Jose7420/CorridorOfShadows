@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
         _rigidbodyPlayer = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
+      
     }
 
     // Update is called once per frame
@@ -59,9 +60,13 @@ public class PlayerController : MonoBehaviour
     /// <param name="move">El valor del movimiento horizontal.</param>    
     private void MovePlayer(float move)
     {
-        if (_isGrounded)
+        if (_isGrounded && _jump == 0)
         {
+            Debug.Log($"La variable _jump es {_jump}");
+            Debug.Log($"La variable _direction es {_direction}.");
+
             FlipSprite(_direction.x);
+
             _animator.SetBool("isStatic", IsPlayerStatic(_direction.x));
             _animator.SetBool("jump", false);
 
@@ -83,9 +88,10 @@ public class PlayerController : MonoBehaviour
             _isGrounded = false;
 
             _rigidbodyPlayer.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
-            _animator.SetBool("isStatic", IsPlayerStatic(_direction.y));
+            _animator.SetBool("isStatic", true);
             _animator.SetBool("jump", true);
-            Debug.Log("Dentro del condicional " + _isGrounded);
+            Debug.Log((_direction.y));
+
         }
     }
 

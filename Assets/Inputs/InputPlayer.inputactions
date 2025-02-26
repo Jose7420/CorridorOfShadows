@@ -9,7 +9,7 @@
                     "name": "Movimientos",
                     "type": "Value",
                     "id": "4c6edf14-c8d7-4438-80cb-3d85adcf543f",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -82,8 +82,30 @@
                 },
                 {
                     "name": "",
+                    "id": "ccccc1f1-967c-4a09-990b-27b976f252fa",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movimientos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b1c1518a-9dc4-448b-b0d7-a6dadb03b699",
                     "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d4f23465-5f74-429c-84cb-2a5ba278e34f",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
