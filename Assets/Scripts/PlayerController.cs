@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
     #region Movimiento del player
 
     /// <summary>
-    /// Mueve al Player cuando se pulsan los botones de dirección y este está en el suelo.
+    /// Mueve al Player cuando se pulsan los botones de direcciï¿½n y este estï¿½ en el suelo.
     /// </summary>
     /// <param name="move">El valor del movimiento horizontal.</param>    
     private void MovePlayer(float move)
@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
         {
             FlipSprite(_direction.x);
             _animator.SetBool("isStatic", IsPlayerStatic(_direction.x));
+            _animator.SetBool("jump", false);
 
             _rigidbodyPlayer.velocity = new Vector2(move, _rigidbodyPlayer.velocity.y);
             _rigidbodyPlayer.position = new Vector2(Mathf.Clamp(_rigidbodyPlayer.position.x, minX * 1f, maxX), 
@@ -76,8 +77,8 @@ public class PlayerController : MonoBehaviour
 
 
     /// <summary>
-    /// Comprueba si se a pulsado la tecla o el botón de salto
-    /// y si el Player está en el suelo para poder saltar.
+    /// Comprueba si se a pulsado la tecla o el botï¿½n de salto
+    /// y si el Player estï¿½ en el suelo para poder saltar.
     /// </summary>
     private void JumpPlayer()
     {
@@ -88,18 +89,20 @@ public class PlayerController : MonoBehaviour
 
             _rigidbodyPlayer.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
             _animator.SetBool("isStatic", IsPlayerStatic(_direction.y));
+            _animator.SetBool("jump", true);
              Debug.Log("Dentro del condicional " + _isGrounded);
+             
         }
-
+       
     }
     #endregion
 
     #region Cambiar de flip
 
     /// <summary>
-    ///  Cambia la dirección del sprite si se está moviendo.
+    ///  Cambia la direcciï¿½n del sprite si se estï¿½ moviendo.
     /// </summary>
-    /// <param name="direction">La dirección en la que el sprite se está moviendo.</param>
+    /// <param name="direction">La direcciï¿½n en la que el sprite se estï¿½ moviendo.</param>
     private void FlipSprite(float direction)
     {
 
@@ -112,9 +115,9 @@ public class PlayerController : MonoBehaviour
     #region Ver el estado isStatic
 
     /// <summary>
-    /// Comprueba si el player está parado    
+    /// Comprueba si el player estï¿½ parado    
     /// </summary>
-    /// <param name="direction">La dirección del movimiento del player</param>
+    /// <param name="direction">La direcciï¿½n del movimiento del player</param>
     /// <returns>True si el player esta parado; de lo contario, False.</returns>
     private bool IsPlayerStatic(float direction)
     {
