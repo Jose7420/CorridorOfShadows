@@ -696,7 +696,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &99097984
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -7202,6 +7202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemigos:
   - {fileID: 819033030700714806, guid: d31b30aa600d4c248894d67d2073d1bb, type: 3}
+  - {fileID: 5764339526520837050, guid: 06ae19e46d91c3f449bd969c1391f5be, type: 3}
   numeroDeEnemigos: 1
 --- !u!1001 &789242074
 PrefabInstance:

@@ -46,7 +46,7 @@ public class SpawnerManager : MonoBehaviour
         {
             for(int i = 0; i < numeroDeEnemigos; i++)
             {
-                positionY =Random.Range(-2.8f, 4.84f);
+                positionY =Random.Range(0.5f, 4.84f);
                 positionX = Random.Range(transform.position.x, transform.position.x + offset);
                 index= Random.Range(0,enemigos.Length);
 

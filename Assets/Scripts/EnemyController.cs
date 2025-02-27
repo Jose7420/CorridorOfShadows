@@ -6,8 +6,8 @@ public class EnemyController : MonoBehaviour
 {
     private Rigidbody2D _rigidbodyPlayer;
 
-    [Header("Velocidad del enemigo")] 
-    [SerializeField] private float speed = 15;//50f;
+    [Header("Velocidad del enemigo")]
+    [SerializeField] private float speed = 3.44f;//15;//50f;
 
     // Start is called before the first frame update
     void Start()
