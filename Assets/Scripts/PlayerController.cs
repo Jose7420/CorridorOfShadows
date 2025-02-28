@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         _rigidbodyPlayer = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
-      
+
     }
 
     // Update is called once per frame
@@ -60,6 +60,7 @@ public class PlayerController : MonoBehaviour
     /// <param name="move">El valor del movimiento horizontal.</param>    
     private void MovePlayer(float move)
     {
+
         if (_isGrounded && _jump == 0)
         {
             Debug.Log($"La variable _jump es {_jump}");
@@ -74,7 +75,11 @@ public class PlayerController : MonoBehaviour
             _rigidbodyPlayer.position = new Vector2(Mathf.Clamp(_rigidbodyPlayer.position.x, minX, maxX),
                 _rigidbodyPlayer.position.y);
         }
-        JumpPlayer();
+        else
+        {
+            JumpPlayer();
+        }
+
     }
 
     /// <summary>
