@@ -5,12 +5,12 @@ using UnityEngine;
 public class LanceController : MonoBehaviour
 {
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             // Mover al jugador
-            collision.transform.position = new Vector2(transform.position.x - 5, collision.transform.position.y);
+            other.transform.position = new Vector2(transform.position.x - 5, other.transform.position.y);
             // Desactivar el objeto padre
             if (transform.parent != null)
             {

@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float minX = -15.7f;
     [SerializeField] private float maxX = 114.5f; //74f;
 
+    private enum Jumping : ushort { up = 1 };
 
     // Start is called before the first frame update
     void Start()
@@ -63,8 +64,8 @@ public class PlayerController : MonoBehaviour
 
         if (_isGrounded && _jump == 0)
         {
-            Debug.Log($"La variable _jump es {_jump}");
-            Debug.Log($"La variable _direction es {_direction}.");
+            //Debug.Log($"La variable _jump es {_jump}");
+            //Debug.Log($"La variable _direction es {_direction}.");
 
             FlipSprite(_direction.x);
 
@@ -75,27 +76,32 @@ public class PlayerController : MonoBehaviour
             _rigidbodyPlayer.position = new Vector2(Mathf.Clamp(_rigidbodyPlayer.position.x, minX, maxX),
                 _rigidbodyPlayer.position.y);
         }
-        else
-        {
-            JumpPlayer();
-        }
+       
+            JumpPlayer(move);
+        
 
     }
 
     /// <summary>
-    /// Comprueba si se a pulsado la tecla o el bot�n de salto
+    /// Comprueba si se a pulsado la tecla o el boton de salto
     /// y si el Player esta en el suelo para poder saltar.
     /// </summary>
-    private void JumpPlayer()
+    private void JumpPlayer(float move)
     {
         if (_jump == 1 && _isGrounded)
         {
+
             _isGrounded = false;
 
-            _rigidbodyPlayer.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+            // Para la velocidad del player
+            _rigidbodyPlayer.velocity = Vector2.zero;
+
+            // dar un impulso horizontal y vertical.
+            _rigidbodyPlayer.AddForce(new Vector2(move * .30f, (int)Jumping.up * _jumpForce), ForceMode2D.Impulse);          
+
             _animator.SetBool("isStatic", true);
             _animator.SetBool("jump", true);
-            Debug.Log((_direction.y));
+         
 
         }
     }
