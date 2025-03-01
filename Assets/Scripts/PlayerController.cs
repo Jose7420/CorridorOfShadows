@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
 
     private enum Jumping : ushort { up = 1 };
 
+
+    private CombatBodyToBody _combatBodyTobody;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +32,7 @@ public class PlayerController : MonoBehaviour
         _rigidbodyPlayer = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
+        _combatBodyTobody = GetComponent<CombatBodyToBody>();
 
     }
 
@@ -37,6 +41,13 @@ public class PlayerController : MonoBehaviour
     {
         _direction = _playerInput.actions["Movimientos"].ReadValue<Vector2>();
         _jump = _playerInput.actions["Jump"].ReadValue<float>();
+
+        _combatBodyTobody.TiempoEntreAtaque();
+        if (_playerInput.actions["Golpe"].WasPressedThisFrame())
+        {
+            _combatBodyTobody.Ataque();
+        }
+
     }
 
     private void FixedUpdate()
@@ -76,9 +87,9 @@ public class PlayerController : MonoBehaviour
             _rigidbodyPlayer.position = new Vector2(Mathf.Clamp(_rigidbodyPlayer.position.x, minX, maxX),
                 _rigidbodyPlayer.position.y);
         }
-       
-            JumpPlayer(move);
-        
+
+        JumpPlayer(move);
+
 
     }
 
@@ -97,11 +108,11 @@ public class PlayerController : MonoBehaviour
             _rigidbodyPlayer.velocity = Vector2.zero;
 
             // dar un impulso horizontal y vertical.
-            _rigidbodyPlayer.AddForce(new Vector2(move * .30f, (int)Jumping.up * _jumpForce), ForceMode2D.Impulse);          
+            _rigidbodyPlayer.AddForce(new Vector2(move * .30f, (int)Jumping.up * _jumpForce), ForceMode2D.Impulse);
 
             _animator.SetBool("isStatic", true);
             _animator.SetBool("jump", true);
-         
+
 
         }
     }
