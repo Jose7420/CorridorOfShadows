@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float minX = -15.7f;
     [SerializeField] private float maxX = 114.5f; //74f;
 
+    [SerializeField] private float danno;
+    [SerializeField] private float vida;
+
     private enum Jumping : ushort { up = 1 };
 
 
@@ -128,7 +131,10 @@ public class PlayerController : MonoBehaviour
     private void FlipSprite(float direction)
     {
         if (direction == 0) return;
-        _spriteRenderer.flipX = direction < 0;
+        // _spriteRenderer.flipX = direction < 0;
+
+       
+        transform.rotation = Quaternion.Euler(0, direction > 0 ? 0 : 180, 0);
     }
 
     #endregion
@@ -146,4 +152,16 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
+
+
+
+    public void TomarDanno(float danno)
+    {
+        vida -= danno;
+
+        if (vida <= 0)
+        {
+            _animator.SetTrigger("Muerte");
+        }
+    }
 }

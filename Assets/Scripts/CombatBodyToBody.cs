@@ -61,11 +61,12 @@ public class CombatBodyToBody : MonoBehaviour
         foreach (Collider2D collisionador in objetos)
         {
 
-            if (collisionador.CompareTag("Enemy"))
+            if (collisionador.CompareTag("Jefe") )
             {
-                collisionador.gameObject.transform.GetComponent<Enemy>().TomarDanno(dangerGolpe);
+                collisionador.GetComponent<Jefe>().TomarDanno(dangerGolpe);
                 Debug.Log(collisionador.name);
             }
+           
         }
     }
 
