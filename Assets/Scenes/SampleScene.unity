@@ -6770,7 +6770,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 75.42181, y: 3.7435489, z: -19.3}
+  m_LocalPosition: {x: 75.42154, y: 3.7437024, z: -19.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8542,7 +8542,7 @@ Transform:
   m_GameObject: {fileID: 1137526851}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.3, y: -0.5, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: -1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -129760,10 +129760,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42c5c99d08f2a38489065c352dc20943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1764909528}
+  player: {fileID: 0}
+  mirandoDerecha: 1
   vida: 50
   controlladorAtaque: {fileID: 423901488}
-  radioAtaque: 2.88
+  radioAtaque: 3.61
   danno: 10
 --- !u!61 &1764909530
 BoxCollider2D:
@@ -130256,7 +130257,7 @@ Transform:
   m_GameObject: {fileID: 1849858762}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 75.425644, y: 4.5916, z: -19.3}
+  m_LocalPosition: {x: 75.42538, y: 4.5916, z: -19.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

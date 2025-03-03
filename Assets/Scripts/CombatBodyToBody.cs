@@ -35,7 +35,7 @@ public class CombatBodyToBody : MonoBehaviour
 
     public void TiempoEntreAtaque()
     {
-        Debug.Log($"Tiempo entre ataque es {tiempoEntreAtaque}");
+       // Debug.Log($"Tiempo entre ataque es {tiempoEntreAtaque}");
         if (tiempoSiguienteAtaque > 0)
         {
             tiempoSiguienteAtaque -= Time.deltaTime;

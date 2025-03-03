@@ -9,13 +9,14 @@ public class Jefe : MonoBehaviour
     private Animator animator;
     private  Rigidbody2D rb2D;
 
-    public Rigidbody2D Rb2D {  get { return rb2D; } }
-               
+    public Rigidbody2D Rb2D {  get { return rb2D; } }    
 
 
     public Transform player;
+
+
    // private CombatBodyToBody _combatBodyTobody;
-    private bool mirandoDerecha = false;
+    [SerializeField]private bool mirandoDerecha = true;
     [Header("Vida")]
     [SerializeField] private float vida;
    
@@ -62,11 +63,16 @@ public class Jefe : MonoBehaviour
 
     public void MirarPlayer()
     {
-        if ((player.position.x < transform.position.x && !mirandoDerecha
-            ) || (player.position.x > transform.position.x && mirandoDerecha))
+              
+        
+        if (  ((player.position.x > transform.position.x) && !mirandoDerecha) 
+            || ((player.position.x < transform.position.x )&& mirandoDerecha))
         {
-            mirandoDerecha = !mirandoDerecha;
-            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y - 180, 0);
+            Debug.Log($"Mirando hacia la derecha {mirandoDerecha}");
+
+           mirandoDerecha = !mirandoDerecha;
+            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
+            Debug.Log($"Mirando hacia la derecha {mirandoDerecha} y el transforom {transform.eulerAngles}");
         }
     }
 
