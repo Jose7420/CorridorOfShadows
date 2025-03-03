@@ -12,19 +12,19 @@ public class Jefe : MonoBehaviour
     public Rigidbody2D Rb2D { get { return rb2D; } }
 
 
-    public Transform player;
+    [SerializeField] private Transform player;
 
 
     // private CombatBodyToBody _combatBodyTobody;
-    [SerializeField] private bool mirandoDerecha = true;
+    [SerializeField] private bool _lookToTheRight = true;
     [Header("Vida")]
-    [SerializeField] private float vida;
+    [SerializeField] private float _life;
 
 
     [Header("Ataque")]
-    [SerializeField] private Transform controlladorAtaque;
-    [SerializeField] private float radioAtaque;
-    [SerializeField] private float danno;
+    [SerializeField] private Transform _attackController;
+    [SerializeField] private float _attackRadius;
+    [SerializeField] private float _damage;
 
     // Start is called before the first frame update
     void Start()
@@ -45,19 +45,19 @@ public class Jefe : MonoBehaviour
     }
 
 
-    public void TomarDanno(float danno)
+    public void TakeDamage(float damage)
     {
-        vida -= danno;
+        _life -= damage;
 
-        if (vida <= 0)
+        if (_life <= 0)
         {
-            animator.SetTrigger("Muerte");
-            Muerte();
+            animator.SetTrigger("Death");
+            Death();
         }
     }
 
 
-    private void Muerte()
+    private void Death()
     {
         Destroy(gameObject, 0.5f);
     }
@@ -66,29 +66,29 @@ public class Jefe : MonoBehaviour
     {
 
 
-        if (((player.position.x > transform.position.x) && !mirandoDerecha)
-            || ((player.position.x < transform.position.x) && mirandoDerecha))
+        if (((player.position.x > transform.position.x) && !_lookToTheRight)
+            || ((player.position.x < transform.position.x) && _lookToTheRight))
         {
-            Debug.Log($"Mirando hacia la derecha {mirandoDerecha}");
+            Debug.Log($"Mirando hacia la derecha {_lookToTheRight}");
 
-            mirandoDerecha = !mirandoDerecha;
+            _lookToTheRight = !_lookToTheRight;
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
-            Debug.Log($"Mirando hacia la derecha {mirandoDerecha} y el transforom {transform.eulerAngles}");
+            Debug.Log($"Mirando hacia la derecha {_lookToTheRight} y el transforom {transform.eulerAngles}");
         }
     }
 
 
 
 
-    public void Ataque()
+    public void Stoke()
     {
-        Collider2D[] objetos = Physics2D.OverlapCircleAll(controlladorAtaque.position, radioAtaque);
+        Collider2D[] objetos = Physics2D.OverlapCircleAll(_attackController.position, _attackRadius);
         foreach (Collider2D objeto in objetos)
         {
                 Debug.Log(objeto.tag);
             if (objeto.CompareTag("Player"))
             {
-                objeto.GetComponent<PlayerController>().TomarDanno(danno);
+                objeto.GetComponent<PlayerController>().TakeDamage(_damage);
             }
         }
     }
@@ -97,7 +97,7 @@ public class Jefe : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(controlladorAtaque.position, radioAtaque);
+        Gizmos.DrawWireSphere(_attackController.position, _attackRadius);
     }
 
 

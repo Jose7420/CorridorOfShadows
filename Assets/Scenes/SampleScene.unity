@@ -5886,8 +5886,8 @@ MonoBehaviour:
   _jumpForce: 10
   minX: -15.7
   maxX: 114.5
-  danno: 0
-  vida: 50
+  _damage: 0
+  _life: 50
 --- !u!114 &251521711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6013,11 +6013,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f91f6ca338c364e9a0be808b443ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controladorGolpe: {fileID: 1518826027}
-  radioGolpe: 1
-  dangerGolpe: 10
-  tiempoEntreAtaque: 1
-  tiempoSiguienteAtaque: 0
+  _hitController: {fileID: 1518826027}
+  _hitRadius: 1
+  _hitDamage: 20
+  _timeBetweenAttack: 1
+  _TimeNextAttack: 0
 --- !u!4 &265589392 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2881003653158403940, guid: 87db8c8af157c3f4b965917a44dad25a, type: 3}
@@ -6284,7 +6284,7 @@ GameObject:
   m_Component:
   - component: {fileID: 423901488}
   m_Layer: 0
-  m_Name: ControlladorAtaque
+  m_Name: AttackController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6770,7 +6770,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.195336, y: 4.1493125, z: -19.3}
+  m_LocalPosition: {x: -8.161549, y: 4.149005, z: -19.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -125319,7 +125319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1518826027}
   m_Layer: 0
-  m_Name: ContorollerCombate
+  m_Name: HitController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129653,7 +129653,7 @@ GameObject:
   - component: {fileID: 1764909530}
   - component: {fileID: 1764909531}
   m_Layer: 0
-  m_Name: golpe1_0
+  m_Name: Boss
   m_TagString: Jefe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129741,7 +129741,7 @@ Transform:
   m_GameObject: {fileID: 1764909525}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 111.3, y: 0, z: -9.3}
+  m_LocalPosition: {x: 108.86, y: 0, z: -9.3}
   m_LocalScale: {x: 5, y: 5, z: 1.25}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -129761,11 +129761,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  mirandoDerecha: 1
-  vida: 50
-  controlladorAtaque: {fileID: 423901488}
-  radioAtaque: 3.61
-  danno: 10
+  _lookToTheRight: 1
+  _life: 50
+  _attackController: {fileID: 423901488}
+  _attackRadius: 3.61
+  _damage: 10
 --- !u!61 &1764909530
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -130257,7 +130257,7 @@ Transform:
   m_GameObject: {fileID: 1849858762}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.922786, y: 4.5916, z: -19.3}
+  m_LocalPosition: {x: -9.922516, y: 4.5916, z: -19.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

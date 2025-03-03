@@ -20,13 +20,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float minX = -15.7f;
     [SerializeField] private float maxX = 114.5f; //74f;
 
-    [SerializeField] private float danno;
-    [SerializeField] private float vida = 50;
+    [SerializeField] private float _damage;
+    [SerializeField] private float _life = 50;
 
     private enum Jumping : ushort { up = 1 };
 
 
-    private CombatBodyToBody _combatBodyTobody;
+    private CombatBodyToBody _handToHandCombat;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         _rigidbodyPlayer = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
-        _combatBodyTobody = GetComponent<CombatBodyToBody>();
+        _handToHandCombat = GetComponent<CombatBodyToBody>();
 
     }
 
@@ -45,10 +45,10 @@ public class PlayerController : MonoBehaviour
         _direction = _playerInput.actions["Movimientos"].ReadValue<Vector2>();
         _jump = _playerInput.actions["Jump"].ReadValue<float>();
 
-        _combatBodyTobody.TiempoEntreAtaque();
+        _handToHandCombat.TimeBetweenAttack();
         if (_playerInput.actions["Golpe"].WasPressedThisFrame())
         {
-            _combatBodyTobody.Ataque();
+            _handToHandCombat.Stroke();
         }
 
     }
@@ -132,7 +132,6 @@ public class PlayerController : MonoBehaviour
     {
         if (direction == 0) return;
         // _spriteRenderer.flipX = direction < 0;
-
        
         transform.rotation = Quaternion.Euler(0, direction > 0 ? 0 : 180, 0);
     }
@@ -153,18 +152,18 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-
-
-    public void TomarDanno(float danno)
+    #region Vida del jugador
+    public void TakeDamage(float damage)
     {
-        vida -= danno;
+        _life -= damage;
 
-        if (vida <= 0)
+        if (_life <= 0)
         {
-            _animator.SetTrigger("Muerte");
+            _animator.SetTrigger("Death");
             transform.position=Vector2.zero;
             _animator.SetBool("isStatic", true);
-            vida = 50;
+            _life= 50;
         }
     }
+    #endregion
 }

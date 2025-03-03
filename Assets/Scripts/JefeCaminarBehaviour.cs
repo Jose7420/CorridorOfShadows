@@ -6,16 +6,16 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 public class JefeCaminarBehaviour : StateMachineBehaviour
 {
 
-    private Jefe jefe;
+    private Jefe boss;
     private Rigidbody2D rb2D;
     [SerializeField] private float velocidadMovimiento;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        jefe = animator.GetComponent<Jefe>();
-        rb2D = jefe.Rb2D;
-        jefe.MirarPlayer();
+        boss = animator.GetComponent<Jefe>();
+        rb2D = boss.Rb2D;
+        boss.MirarPlayer();
 
     }
 

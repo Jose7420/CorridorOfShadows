@@ -5,57 +5,57 @@ using UnityEngine;
 public class CombatBodyToBody : MonoBehaviour
 {
 
-    [SerializeField] private Transform controladorGolpe;
-    [SerializeField] private float radioGolpe;
-    [SerializeField] private float dangerGolpe;
-    [SerializeField] private float tiempoEntreAtaque;
-    [SerializeField] private float tiempoSiguienteAtaque;
+    [SerializeField] private Transform _hitController;
+    [SerializeField] private float _hitRadius;
+    [SerializeField] private float _hitDamage;
+    [SerializeField] private float _timeBetweenAttack;
+    [SerializeField] private float _TimeNextAttack;
 
-    private Animator animator;
+    private Animator _animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
     }
     /*
     // Update is called once per frame
     void Update()
     {
-        //if (tiempoSiguienteAtaque > 0)
+        //if (_TimeNextAttack > 0)
         //{
-        //    tiempoSiguienteAtaque -= Time.deltaTime;
+        //    _TimeNextAttack -= Time.deltaTime;
         //}
-        //if (Input.GetKeyDown("b") && tiempoSiguienteAtaque <=  0)
+        //if (Input.GetKeyDown("b") && _TimeNextAttack <=  0)
         //{
         //    Golpe();
-        //    tiempoSiguienteAtaque = tiempoEntreAtaque;
+        //    _TimeNextAttack = _timeBetweenAttack;
         //}
     }*/
 
-    public void TiempoEntreAtaque()
+    public void TimeBetweenAttack()
     {
        // Debug.Log($"Tiempo entre ataque es {tiempoEntreAtaque}");
-        if (tiempoSiguienteAtaque > 0)
+        if (_TimeNextAttack > 0)
         {
-            tiempoSiguienteAtaque -= Time.deltaTime;
+            _TimeNextAttack -= Time.deltaTime;
         }
 
     }
-    public void Ataque()
+    public void Stroke()
     {
 
-        if (tiempoSiguienteAtaque <= 0)
+        if (_TimeNextAttack <= 0)
         {
-            Golpe();
-            tiempoSiguienteAtaque = tiempoEntreAtaque;
+            Hit();
+            _TimeNextAttack = _timeBetweenAttack;
         }
     }
 
-    private void Golpe()
+    private void Hit()
     {
-        animator.SetTrigger("Golpe");
-        Collider2D[] objetos = Physics2D.OverlapCircleAll(controladorGolpe.position, radioGolpe);
+        _animator.SetTrigger("Hit");
+        Collider2D[] objetos = Physics2D.OverlapCircleAll(_hitController.position, _hitRadius);
 
 
         foreach (Collider2D collisionador in objetos)
@@ -63,7 +63,7 @@ public class CombatBodyToBody : MonoBehaviour
 
             if (collisionador.CompareTag("Jefe") )
             {
-                collisionador.GetComponent<Jefe>().TomarDanno(dangerGolpe);
+                collisionador.GetComponent<Jefe>().TakeDamage(_hitDamage);
                 Debug.Log(collisionador.name);
             }
            
@@ -73,6 +73,6 @@ public class CombatBodyToBody : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(controladorGolpe.position, radioGolpe);
+        Gizmos.DrawWireSphere(_hitController.position, _hitRadius);
     }
 }
