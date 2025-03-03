@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxX = 114.5f; //74f;
 
     [SerializeField] private float danno;
-    [SerializeField] private float vida;
+    [SerializeField] private float vida = 50;
 
     private enum Jumping : ushort { up = 1 };
 
@@ -162,6 +162,9 @@ public class PlayerController : MonoBehaviour
         if (vida <= 0)
         {
             _animator.SetTrigger("Muerte");
+            transform.position=Vector2.zero;
+            _animator.SetBool("isStatic", true);
+            vida = 50;
         }
     }
 }

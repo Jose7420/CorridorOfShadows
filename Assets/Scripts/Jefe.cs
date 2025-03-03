@@ -7,19 +7,19 @@ public class Jefe : MonoBehaviour
 {
 
     private Animator animator;
-    private  Rigidbody2D rb2D;
+    private Rigidbody2D rb2D;
 
-    public Rigidbody2D Rb2D {  get { return rb2D; } }    
+    public Rigidbody2D Rb2D { get { return rb2D; } }
 
 
     public Transform player;
 
 
-   // private CombatBodyToBody _combatBodyTobody;
-    [SerializeField]private bool mirandoDerecha = true;
+    // private CombatBodyToBody _combatBodyTobody;
+    [SerializeField] private bool mirandoDerecha = true;
     [Header("Vida")]
     [SerializeField] private float vida;
-   
+
 
     [Header("Ataque")]
     [SerializeField] private Transform controlladorAtaque;
@@ -32,18 +32,19 @@ public class Jefe : MonoBehaviour
         animator = GetComponent<Animator>();
         rb2D = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-       // _combatBodyTobody = GetComponent<CombatBodyToBody>();
+        // _combatBodyTobody = GetComponent<CombatBodyToBody>();
     }
 
     private void Update()
     {
-        float distanciaplayer =Vector2.Distance(transform.position,player.position);
-        animator.SetFloat("DistanciaPlayer",distanciaplayer);
-        
-        
+        float distanciaplayer = Vector2.Distance(transform.position, player.position);
+        animator.SetFloat("DistanciaPlayer", distanciaplayer);
+        if (transform.position.x < 83 || transform.position.x >111 ) { transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0); }
+     
+
     }
 
-   
+
     public void TomarDanno(float danno)
     {
         vida -= danno;
@@ -58,19 +59,19 @@ public class Jefe : MonoBehaviour
 
     private void Muerte()
     {
-        Destroy(gameObject,0.5f);
+        Destroy(gameObject, 0.5f);
     }
 
     public void MirarPlayer()
     {
-              
-        
-        if (  ((player.position.x > transform.position.x) && !mirandoDerecha) 
-            || ((player.position.x < transform.position.x )&& mirandoDerecha))
+
+
+        if (((player.position.x > transform.position.x) && !mirandoDerecha)
+            || ((player.position.x < transform.position.x) && mirandoDerecha))
         {
             Debug.Log($"Mirando hacia la derecha {mirandoDerecha}");
 
-           mirandoDerecha = !mirandoDerecha;
+            mirandoDerecha = !mirandoDerecha;
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
             Debug.Log($"Mirando hacia la derecha {mirandoDerecha} y el transforom {transform.eulerAngles}");
         }
@@ -78,13 +79,15 @@ public class Jefe : MonoBehaviour
 
 
 
-    
+
     public void Ataque()
     {
         Collider2D[] objetos = Physics2D.OverlapCircleAll(controlladorAtaque.position, radioAtaque);
-        foreach(Collider2D objeto in objetos)
+        foreach (Collider2D objeto in objetos)
         {
-            if (objeto.CompareTag("Player")){
+                Debug.Log(objeto.tag);
+            if (objeto.CompareTag("Player"))
+            {
                 objeto.GetComponent<PlayerController>().TomarDanno(danno);
             }
         }
@@ -96,9 +99,9 @@ public class Jefe : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(controlladorAtaque.position, radioAtaque);
     }
-    
 
-    
-    
+
+
+
 
 }
