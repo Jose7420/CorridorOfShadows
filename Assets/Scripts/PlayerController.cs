@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private float _jump;
 
     [SerializeField] private float _speed = 500;
-    [SerializeField] private float _jumpForce = 10f;
+    [SerializeField] private float _jumpForce = 12f;//10f;
     private bool _isGrounded;
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
             _rigidbodyPlayer.velocity = Vector2.zero;
 
             // dar un impulso horizontal y vertical.
-            _rigidbodyPlayer.AddForce(new Vector2(move * .30f, (int)Jumping.up * _jumpForce), ForceMode2D.Impulse);
+            _rigidbodyPlayer.AddForce(new Vector2(move * .75f, (int)Jumping.up * _jumpForce), ForceMode2D.Impulse);
 
             _animator.SetBool("isStatic", true);
             _animator.SetBool("jump", true);
@@ -161,6 +161,7 @@ public class PlayerController : MonoBehaviour
         {
             _animator.SetTrigger("Death");
             transform.position=Vector2.zero;
+            _animator.SetBool("Hit", true);
             _animator.SetBool("isStatic", true);
             _life= 50;
         }
