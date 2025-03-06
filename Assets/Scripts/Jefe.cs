@@ -59,7 +59,7 @@ public class Jefe : MonoBehaviour
 
     private void Death()
     {
-        Destroy(gameObject, 0.5f);
+        Destroy(gameObject, 3.15f);
     }
 
     public void MirarPlayer()

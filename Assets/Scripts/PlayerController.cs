@@ -160,8 +160,8 @@ public class PlayerController : MonoBehaviour
         if (_life <= 0)
         {
             _animator.SetTrigger("Death");
-            transform.position=Vector2.zero;
-            _animator.SetBool("Hit", true);
+            transform.position=new Vector3(70f,transform.position.y,transform.position.z);
+           
             _animator.SetBool("isStatic", true);
             _life= 50;
         }
