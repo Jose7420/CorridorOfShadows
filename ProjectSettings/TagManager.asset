@@ -10,6 +10,7 @@ TagManager:
   - Speartraps
   - Lance
   - Jefe
+  - Bolsa
   layers:
   - Default
   - TransparentFX

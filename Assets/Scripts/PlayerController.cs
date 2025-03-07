@@ -65,6 +65,18 @@ public class PlayerController : MonoBehaviour
         _isGrounded = collision.gameObject.CompareTag("Ground");
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+               
+        if (collision.gameObject.CompareTag("Bolsa"))
+        {
+            GameManagerLocal.Instance.AddPoints(6);
+           
+            Destroy(collision.gameObject,0.5f);
+        }
+
+    }
+
     #endregion
 
     #region Movimiento del player

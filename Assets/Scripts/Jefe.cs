@@ -69,11 +69,11 @@ public class Jefe : MonoBehaviour
         if (((player.position.x > transform.position.x) && !_lookToTheRight)
             || ((player.position.x < transform.position.x) && _lookToTheRight))
         {
-            Debug.Log($"Mirando hacia la derecha {_lookToTheRight}");
+          //  Debug.Log($"Mirando hacia la derecha {_lookToTheRight}");
 
             _lookToTheRight = !_lookToTheRight;
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
-            Debug.Log($"Mirando hacia la derecha {_lookToTheRight} y el transforom {transform.eulerAngles}");
+            //Debug.Log($"Mirando hacia la derecha {_lookToTheRight} y el transforom {transform.eulerAngles}");
         }
     }
 

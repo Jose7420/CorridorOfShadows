@@ -56,6 +56,7 @@ public class GameManagerLocal : MonoBehaviour
     
     public void RemovePoints(int points) { 
         _Score -= points;
+        _Score = _Score < 0 ? 0 : _Score;
         UpdateScore();
     }
 
