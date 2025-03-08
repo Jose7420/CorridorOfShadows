@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CombatBodyToBody : MonoBehaviour
@@ -65,6 +66,12 @@ public class CombatBodyToBody : MonoBehaviour
             {
                 collisionador.GetComponent<Jefe>().TakeDamage(_hitDamage);
                 Debug.Log(collisionador.name);
+            }
+            if (collisionador.CompareTag("Enemy"))
+            {
+                GameManagerLocal.Instance.AddPoints(5);
+                Destroy(collisionador.gameObject);
+
             }
            
         }

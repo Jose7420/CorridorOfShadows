@@ -696,7 +696,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!199 &99097984
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -6770,7 +6770,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.46529, y: 4.034758, z: -19.3}
+  m_LocalPosition: {x: 7.297881, y: 4.0091286, z: -19.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7196,7 +7196,7 @@ Transform:
   m_GameObject: {fileID: 786236510}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.68, y: 0.59, z: 9.781645}
+  m_LocalPosition: {x: 19.68, y: 0.59, z: 19.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7209,14 +7209,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 786236510}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e83a720c1a7f57949a9e881129c22d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemigos:
   - {fileID: 819033030700714806, guid: d31b30aa600d4c248894d67d2073d1bb, type: 3}
-  - {fileID: 5764339526520837050, guid: 06ae19e46d91c3f449bd969c1391f5be, type: 3}
   numeroDeEnemigos: 1
 --- !u!1001 &789242074
 PrefabInstance:
@@ -130257,7 +130256,7 @@ Transform:
   m_GameObject: {fileID: 1849858762}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.821505, y: 4.5916, z: -19.3}
+  m_LocalPosition: {x: -9.798844, y: 4.5916, z: -19.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

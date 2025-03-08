@@ -42,13 +42,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _direction = _playerInput.actions["Movimientos"].ReadValue<Vector2>();
-        _jump = _playerInput.actions["Jump"].ReadValue<float>();
 
         _handToHandCombat.TimeBetweenAttack();
-        if (_playerInput.actions["Golpe"].WasPressedThisFrame())
+        if (_playerInput.actions["Golpe"].IsPressed())
         {
             _handToHandCombat.Stroke();
+        }
+        else
+        {
+            _direction = _playerInput.actions["Movimientos"].ReadValue<Vector2>();
+            _jump = _playerInput.actions["Jump"].ReadValue<float>();
+
         }
 
     }

@@ -25,12 +25,16 @@ public class EnemyController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    /*
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameManagerLocal.Instance.AddPoints(5);
-        Destroy(gameObject,0.1f);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            GameManagerLocal.Instance.AddPoints(5);
+            Destroy(gameObject, 0.1f);
+        }
     }
+    */
 
   
 }
