@@ -5789,10 +5789,10 @@ GameObject:
   - component: {fileID: 251521708}
   - component: {fileID: 251521711}
   - component: {fileID: 251521710}
+  - component: {fileID: 251521715}
   - component: {fileID: 251521713}
   - component: {fileID: 251521712}
   - component: {fileID: 251521714}
-  - component: {fileID: 251521715}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5861,7 +5861,7 @@ Transform:
   m_GameObject: {fileID: 251521707}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: 0, z: -9.3}
+  m_LocalPosition: {x: -10, y: 0, z: -9.06}
   m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6018,6 +6018,7 @@ MonoBehaviour:
   _hitDamage: 20
   _timeBetweenAttack: 1
   _TimeNextAttack: 0
+  _isActiveHit: 0
 --- !u!4 &265589392 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2881003653158403940, guid: 87db8c8af157c3f4b965917a44dad25a, type: 3}
@@ -6770,7 +6771,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.056408, y: 3.984171, z: -19.3}
+  m_LocalPosition: {x: 2.7735214, y: 4.050021, z: -19.060001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -130256,7 +130257,7 @@ Transform:
   m_GameObject: {fileID: 1849858762}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.776777, y: 4.5916, z: -19.3}
+  m_LocalPosition: {x: -9.835038, y: 4.5916, z: -19.060001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
     private enum Jumping : ushort { up = 1 };
     private bool _hitPressed;
-    private bool _hitWasReleasedThisFrame;
+  
 
     private CombatBodyToBody _handToHandCombat;
 
@@ -44,17 +44,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
+        _hitPressed = _playerInput.actions["Golpe"].IsPressed();
 
         _handToHandCombat.TimeBetweenAttack();
-        _hitWasReleasedThisFrame = _playerInput.actions["Golpe"].WasReleasedThisFrame();
-        _hitPressed = _playerInput.actions["Golpe"].IsPressed();
 
         if (_hitPressed)
         {
             _rigidbodyPlayer.velocity = Vector2.zero;
             _handToHandCombat.Stroke();
         }
-        else
+        else 
         {
             _direction = _playerInput.actions["Movimientos"].ReadValue<Vector2>();
             _jump = _playerInput.actions["Jump"].ReadValue<float>();
@@ -65,12 +65,11 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if ((_direction.x <0.1f || _direction.x >0.1f  ) ) 
+        if (!_handToHandCombat.IsActiveHit)
         {
-
             MovePlayer(_direction.x * _speed * Time.fixedDeltaTime);
-
         }
+
     }
 
     #region Colisiones

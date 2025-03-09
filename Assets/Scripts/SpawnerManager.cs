@@ -9,7 +9,7 @@ public class SpawnerManager : MonoBehaviour
     private float positionX;
     private float offset = 0.5f;
     [SerializeField,Range(1,5)] private int numeroDeEnemigos;
-    private float temporizador = 0.5f;
+    private float temporizador = 1;//0.5f;
     private int index;
     
     private Dictionary<int,string> colors = new Dictionary<int,string>()
