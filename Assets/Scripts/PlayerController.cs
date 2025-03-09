@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -24,7 +25,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _life = 50;
 
     private enum Jumping : ushort { up = 1 };
-
+    private bool _hitPressed;
+    private bool _hitWasReleasedThisFrame;
 
     private CombatBodyToBody _handToHandCombat;
 
@@ -44,8 +46,12 @@ public class PlayerController : MonoBehaviour
     {
 
         _handToHandCombat.TimeBetweenAttack();
-        if (_playerInput.actions["Golpe"].IsPressed())
+        _hitWasReleasedThisFrame = _playerInput.actions["Golpe"].WasReleasedThisFrame();
+        _hitPressed = _playerInput.actions["Golpe"].IsPressed();
+
+        if (_hitPressed)
         {
+            _rigidbodyPlayer.velocity = Vector2.zero;
             _handToHandCombat.Stroke();
         }
         else
@@ -59,7 +65,12 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MovePlayer(_direction.x * _speed * Time.fixedDeltaTime);
+        if ((_direction.x <0.1f || _direction.x >0.1f  ) ) 
+        {
+
+            MovePlayer(_direction.x * _speed * Time.fixedDeltaTime);
+
+        }
     }
 
     #region Colisiones
@@ -71,12 +82,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-               
+
         if (collision.gameObject.CompareTag("Bolsa"))
         {
             GameManagerLocal.Instance.AddPoints(6);
-           
-            Destroy(collision.gameObject,0.5f);
+
+            Destroy(collision.gameObject, 0.5f);
         }
 
     }
@@ -148,7 +159,7 @@ public class PlayerController : MonoBehaviour
     {
         if (direction == 0) return;
         // _spriteRenderer.flipX = direction < 0;
-       
+
         transform.rotation = Quaternion.Euler(0, direction > 0 ? 0 : 180, 0);
     }
 
@@ -176,10 +187,10 @@ public class PlayerController : MonoBehaviour
         if (_life <= 0)
         {
             _animator.SetTrigger("Death");
-            transform.position=new Vector3(70f,transform.position.y,transform.position.z);
-           
+            transform.position = new Vector3(70f, transform.position.y, transform.position.z);
+
             _animator.SetBool("isStatic", true);
-            _life= 50;
+            _life = 50;
         }
     }
     #endregion
