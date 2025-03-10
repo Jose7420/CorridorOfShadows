@@ -40,7 +40,7 @@ public class GameManagerLocal : MonoBehaviour
     
     // Private variables
     private bool _isEndGame;
-    private int score;
+    private int _score;
 
     private readonly float _startTime = 5.0f; // [You can customize this value] Start time to start the live players points
 
@@ -102,7 +102,7 @@ public class GameManagerLocal : MonoBehaviour
     /// </summary>
     public void UpdateScore()
     {
-        scoreText.text = $"Score: {score.ToString()}";
+        scoreText.text = $"Score: {_score.ToString()}";
         // **** [Important]
         //_globalGameManager.CmdUpdatePlayerScore(score,GameType.Minigame); // This is very important, When your player get any points in the
         // game, you need call the command to synchronize with the Global
@@ -113,15 +113,15 @@ public class GameManagerLocal : MonoBehaviour
 
     public void AddPoints(int points)
     {
-        score += points;
+        _score += points;
         UpdateScore();
     }
 
 
     public void RemovePoints(int points)
     {
-        score -= points;
-        score = (score <= 0) ? 0 : score;
+        _score -= points;
+        _score = (_score <= 0) ? 0 : _score;
         UpdateScore();
     }
     

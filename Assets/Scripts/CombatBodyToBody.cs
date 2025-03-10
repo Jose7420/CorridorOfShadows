@@ -60,6 +60,7 @@ public class CombatBodyToBody : MonoBehaviour
     private void Hit()
     {
         _animator.SetTrigger("Hit");
+
         Collider2D[] objetos = Physics2D.OverlapCircleAll(_hitController.position, _hitRadius);
         StartCoroutine(MethodName);
 
