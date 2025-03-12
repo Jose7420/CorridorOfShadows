@@ -5884,7 +5884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 500
-  _jumpForce: 12
+  _jumpForce: 14.5
   minX: -15.7
   maxX: 114.5
   _damage: 10
@@ -6015,9 +6015,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hitController: {fileID: 1518826027}
-  _hitRadius: 2.5
+  _hitRadius: 3.25
   _hitDamage: 20
-  _timeBetweenAttack: 1
+  _timeBetweenAttack: 0.5
   _TimeNextAttack: 0
   _isActiveHit: 0
 --- !u!61 &251521716
@@ -6818,7 +6818,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.7660971, y: 3.7686963, z: -19.060001}
+  m_LocalPosition: {x: 11.106232, y: 3.6965375, z: -19.060001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8829,8 +8829,8 @@ Transform:
   m_GameObject: {fileID: 1137526851}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3, y: -0.5, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: -1}
+  m_LocalPosition: {x: 0.3, y: -1.3299, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5286024, z: -1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1029227082}
@@ -125720,7 +125720,7 @@ Transform:
   m_GameObject: {fileID: 1518826026}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.05, y: -0.92, z: -9.3}
+  m_LocalPosition: {x: 3.35, y: 0.32, z: -9.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -126354,7 +126354,7 @@ TilemapCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1.13}
+  m_Offset: {x: 0, y: -1.73}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
@@ -130010,7 +130010,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1762743379
 Transform:
   m_ObjectHideFlags: 0
@@ -130645,7 +130645,7 @@ Transform:
   m_GameObject: {fileID: 1849858762}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.644472, y: 4.3716, z: -19.060001}
+  m_LocalPosition: {x: -11.541498, y: 4.3716, z: -19.060001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -131184,7 +131184,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2104022292
 Transform:
   m_ObjectHideFlags: 0
