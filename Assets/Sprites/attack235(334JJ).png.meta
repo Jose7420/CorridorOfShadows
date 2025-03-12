@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f83da75d3dd504c4f856f6e44118e2c8
+guid: 9cc4ace9d7da0aa4a8383c072242d437
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,85 +110,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: attack23_0
+      name: attack235(334JJ)_0
       rect:
         serializedVersion: 2
-        x: 165
+        x: 166
         y: 44
-        width: 92
+        width: 58
         height: 99
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.57311195, y: 0.46618438}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc8673f41986a3c4fbc9e9bb61b5aaea
-      internalID: -269381907
+      spriteID: 6fff03a63f97d5545a849052000b10f4
+      internalID: 1570266524
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack23_1
+      name: attack235(334JJ)_1
       rect:
         serializedVersion: 2
         x: 51
         y: 46
-        width: 92
-        height: 99
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 49
+        height: 95
+      alignment: 9
+      pivot: {x: 0.60931426, y: 0.4976507}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9fce9cb3e5d06234d97992d6ca29daa8
-      internalID: -806331370
+      spriteID: 9fce994ca83db794d921a40ecb32931a
+      internalID: -935368614
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack23_2
+      name: attack235(334JJ)_2
       rect:
         serializedVersion: 2
         x: 298
-        y: 43
+        y: 42
         width: 92
-        height: 99
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 92
+      alignment: 9
+      pivot: {x: 0.23315097, y: 0.48059282}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60e3546e7f3563844ba063714f07079c
-      internalID: -820564631
+      spriteID: 04dee71da7317cc478221302a67b103d
+      internalID: 736394267
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack23_3
+      name: attack235(334JJ)_3
       rect:
         serializedVersion: 2
         x: 416
-        y: 42
-        width: 92
-        height: 99
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 41
+        width: 82
+        height: 86
+      alignment: 9
+      pivot: {x: 0.29586977, y: 0.48442912}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b82d97d3c23975941bda8316fd526492
-      internalID: -595386335
+      spriteID: 341aa757c247c474a9c9dad97d764b26
+      internalID: -153405946
       vertices: []
       indices: 
       edges: []
@@ -204,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      attack23_0: -269381907
-      attack23_1: -806331370
-      attack23_2: -820564631
-      attack23_3: -595386335
+      attack235(334JJ)_0: 1570266524
+      attack235(334JJ)_1: -935368614
+      attack235(334JJ)_2: 736394267
+      attack235(334JJ)_3: -153405946
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
