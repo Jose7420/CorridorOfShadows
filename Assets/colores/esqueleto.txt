@@ -1,0 +1,11 @@
+color
+
+piel #eab372
+armadurapecho #977a72
+falda #100a0a
+cinta escudo #580a19
+escudo #2f3f3e
+
+espada #9792c6
+
+
