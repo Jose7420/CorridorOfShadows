@@ -7014,7 +7014,7 @@ Transform:
   m_GameObject: {fileID: 423901487}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.73, y: 1.25, z: 0}
+  m_LocalPosition: {x: 5.91, y: 0.97, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -131177,7 +131177,7 @@ MonoBehaviour:
   _lookToTheRight: 1
   _life: 50
   _attackController: {fileID: 423901488}
-  _attackRadius: 3.61
+  _attackRadius: 2.36
   _damage: 10
   _attackClip: {fileID: 8300000, guid: 6a5ac6771eee38043ad46beca876c9aa, type: 3}
 --- !u!61 &1764909530
