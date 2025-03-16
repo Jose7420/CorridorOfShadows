@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float _damage;
     [SerializeField] private float _life = 50;
-
+    [SerializeField] private AudioClip _audioClip;
     private enum Jumping : ushort { up = 1 };
     private bool _hitPressed;
 
@@ -87,8 +87,9 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Bolsa"))
         {
             GameManagerLocal.Instance.AddPoints(6);
+            GetComponent<AudioSource>().PlayOneShot(_audioClip);
 
-            Destroy(collision.gameObject, 0.5f);
+            Destroy(collision.gameObject, 0.1f);
         }
 
     }
