@@ -26,6 +26,8 @@ public class Jefe : MonoBehaviour
     [SerializeField] private float _attackRadius;
     [SerializeField] private float _damage;
 
+    [SerializeField] AudioClip _attackClip;
+    private AudioSource _attackSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +35,7 @@ public class Jefe : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         // _combatBodyTobody = GetComponent<CombatBodyToBody>();
+        _attackSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -88,6 +91,7 @@ public class Jefe : MonoBehaviour
                 Debug.Log(objeto.tag);
             if (objeto.CompareTag("Player"))
             {
+                _attackSource.PlayOneShot(_attackClip);
                 objeto.GetComponent<PlayerController>().TakeDamage(_damage);
             }
         }

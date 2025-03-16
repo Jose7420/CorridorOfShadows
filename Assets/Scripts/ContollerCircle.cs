@@ -10,11 +10,14 @@ public class ContollerCircle : MonoBehaviour
     private float time;
    [SerializeField] private float _shoot = 1f;
     public GameObject dardo;
+
+    private AudioSource _audioSource;
     // Start is called before the first frame update
     void Start()
     {
         //Invoke(nameof(Launch),0.5f); 
         time = _shoot;
+        _audioSource = transform.parent.GetComponent<AudioSource>();
 
         //StartCoroutine(LaunchWithDelay(0.5f));
     }
@@ -31,6 +34,7 @@ public class ContollerCircle : MonoBehaviour
 
     private IEnumerator LaunchWithDelay(float delay)
     {
+        _audioSource.Stop();
         yield return new WaitForSeconds(delay);
         Launch();
     }
@@ -40,7 +44,8 @@ public class ContollerCircle : MonoBehaviour
     {
         var obj = Instantiate(dardo, transform.position, transform.rotation);
         Destroy(obj,0.5f);
-        Debug.Log("Launched dardo"+dardo.name);
+       _audioSource.Play();
+       // Debug.Log("Launched dardo"+dardo.name);
 
     }
 

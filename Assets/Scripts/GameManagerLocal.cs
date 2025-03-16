@@ -114,6 +114,7 @@ public class GameManagerLocal : MonoBehaviour
     public void AddPoints(int points)
     {
         _score += points;
+        _score =(_score >50) ?50:_score;
         UpdateScore();
     }
 
