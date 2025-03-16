@@ -17,7 +17,8 @@ public class CombatBodyToBody : MonoBehaviour
     public bool IsActiveHit { get => _isActiveHit; }
 
     private AudioSource _audioSource;
-    private AudioClip _audioClip;
+    [SerializeField]private AudioClip _audioBat;
+    [SerializeField]private AudioClip _audioBoss;
 
 
     // Start is called before the first frame update
@@ -25,7 +26,7 @@ public class CombatBodyToBody : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _audioSource = GetComponent<AudioSource>();
-        _audioClip = GetComponent<AudioClip>();
+        
     }
     /*
     // Update is called once per frame
@@ -65,32 +66,20 @@ public class CombatBodyToBody : MonoBehaviour
     private void Hit()
     {
         _animator.SetTrigger("Hit");
+       
 
-        Collider2D[] objetos = Physics2D.OverlapCircleAll(_hitController.position, _hitRadius);
+        Collider2D[] objects = Physics2D.OverlapCircleAll(_hitController.position, _hitRadius);
         StartCoroutine(MethodName);
+        StartCoroutine(LateHit(objects));
 
-        foreach (Collider2D collisionador in objetos)
-        {
 
-            if (collisionador.CompareTag("Jefe"))
-            {
-                collisionador.GetComponent<Jefe>().TakeDamage(_hitDamage);
-                Debug.Log(collisionador.name);
-                
-            }
-            if (collisionador.CompareTag("Enemy"))
-            {
-                GameManagerLocal.Instance.AddPoints(5);
-                Destroy(collisionador.gameObject);
 
-            }
 
-        }
 
 
     }
 
-    private void OnDrawGizmos()
+private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(_hitController.position, _hitRadius);
@@ -102,4 +91,48 @@ public class CombatBodyToBody : MonoBehaviour
         yield return new WaitForSeconds(1);
         _isActiveHit = false;
     }
+
+    private IEnumerator LateHit(Collider2D[] objects)
+    {
+        yield return new WaitForSeconds(0.40f);
+        CheckWhoHitsWho(objects);
+
+    }
+
+
+    private void CheckWhoHitsWho(Collider2D[] objects )
+    {
+        foreach (Collider2D collisionador in objects)
+        {
+
+            if (collisionador.CompareTag("Jefe"))
+            {
+                AcitveSound(_audioBoss);
+                collisionador.GetComponent<Jefe>().TakeDamage(_hitDamage);
+                Debug.Log(collisionador.name);
+
+            }
+            if (collisionador.CompareTag("Enemy"))
+            {
+                AcitveSound(_audioBat);
+                GameManagerLocal.Instance.AddPoints(5);
+                Destroy(collisionador.gameObject);
+
+            }
+
+        }
+    }
+
+    #region Reproducir sonidos
+    /// <summary>
+    /// Se reproduce el sonido que se le pasa por el parametro.
+    /// </summary>
+    /// <param name="audioClip"> El sonido se pasa por paramtros</param>
+    public void AcitveSound(AudioClip audioClip)
+    {
+        _audioSource.PlayOneShot(audioClip);
+    }
+    #endregion
+
+
 }

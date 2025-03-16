@@ -29,8 +29,7 @@ public class PlayerController : MonoBehaviour
 
 
     private CombatBodyToBody _handToHandCombat;
-    private AudioClip _audioClip;
-    private AudioSource _audioSource;
+  
 
     // Start is called before the first frame update
     void Start()
@@ -40,8 +39,7 @@ public class PlayerController : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
         _handToHandCombat = GetComponent<CombatBodyToBody>();
-        _audioClip = GetComponent<AudioClip>();
-        _audioSource = GetComponent<AudioSource>();
+       
 
     }
 
@@ -198,11 +196,5 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    #region Acitvar Sonidos
-
-    public void AcitveSound(AudioClip audioClip)
-    {
-        _audioSource.PlayOneShot(audioClip);
-    }
-    #endregion
+   
 }
