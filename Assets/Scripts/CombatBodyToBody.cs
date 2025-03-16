@@ -16,11 +16,16 @@ public class CombatBodyToBody : MonoBehaviour
     private const string MethodName = nameof(HitACtive);
     public bool IsActiveHit { get => _isActiveHit; }
 
+    private AudioSource _audioSource;
+    private AudioClip _audioClip;
+
 
     // Start is called before the first frame update
     void Start()
     {
         _animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
+        _audioClip = GetComponent<AudioClip>();
     }
     /*
     // Update is called once per frame
@@ -71,6 +76,7 @@ public class CombatBodyToBody : MonoBehaviour
             {
                 collisionador.GetComponent<Jefe>().TakeDamage(_hitDamage);
                 Debug.Log(collisionador.name);
+                
             }
             if (collisionador.CompareTag("Enemy"))
             {

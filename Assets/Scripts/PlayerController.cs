@@ -26,9 +26,11 @@ public class PlayerController : MonoBehaviour
 
     private enum Jumping : ushort { up = 1 };
     private bool _hitPressed;
-  
+
 
     private CombatBodyToBody _handToHandCombat;
+    private AudioClip _audioClip;
+    private AudioSource _audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -38,13 +40,15 @@ public class PlayerController : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
         _handToHandCombat = GetComponent<CombatBodyToBody>();
+        _audioClip = GetComponent<AudioClip>();
+        _audioSource = GetComponent<AudioSource>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+
         _hitPressed = _playerInput.actions["Golpe"].IsPressed();
 
         _handToHandCombat.TimeBetweenAttack();
@@ -54,7 +58,7 @@ public class PlayerController : MonoBehaviour
             _rigidbodyPlayer.velocity = Vector2.zero;
             _handToHandCombat.Stroke();
         }
-        else 
+        else
         {
             _direction = _playerInput.actions["Movimientos"].ReadValue<Vector2>();
             _jump = _playerInput.actions["Jump"].ReadValue<float>();
@@ -191,6 +195,14 @@ public class PlayerController : MonoBehaviour
             _animator.SetBool("isStatic", true);
             _life = 50;
         }
+    }
+    #endregion
+
+    #region Acitvar Sonidos
+
+    public void AcitveSound(AudioClip audioClip)
+    {
+        _audioSource.PlayOneShot(audioClip);
     }
     #endregion
 }

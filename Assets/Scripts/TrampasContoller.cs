@@ -6,13 +6,15 @@ using UnityEngine;
 
 public class TrampasContoller : MonoBehaviour
 {
-
+    private AudioSource _audioSource;
     [SerializeField] private GameObject sierra;
 
     private void Start()
     {
         sierra = GameObject.FindGameObjectWithTag("Sierra");
         sierra.SetActive(false);
+        _audioSource = GetComponent<AudioSource>();
+        
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,6 +23,8 @@ public class TrampasContoller : MonoBehaviour
         {
               sierra.SetActive(true);  
               MoveSaw.IsRotate = true;
+            _audioSource.Play();
+             
                
         }
     }
@@ -28,6 +32,7 @@ public class TrampasContoller : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         sierra.SetActive(false);
+        _audioSource.Stop();
     }
 
 

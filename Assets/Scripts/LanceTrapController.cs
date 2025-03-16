@@ -6,13 +6,14 @@ using UnityEngine;
 
 public class LanceTrapController : MonoBehaviour
 {
-
+    private AudioSource _audioSource;
     [SerializeField] private GameObject traps;
 
     private void Start()
     {
         traps = GameObject.FindGameObjectWithTag("Lance");
         traps.SetActive(false);
+        _audioSource = GetComponent<AudioSource>();
     }
     private void OnTriggerEnter2D(Collider2D other)
 
@@ -21,6 +22,8 @@ public class LanceTrapController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             traps.SetActive(true);
+            _audioSource.Play();
+
         }
     }
 
@@ -29,5 +32,6 @@ public class LanceTrapController : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         traps.SetActive(false);
+        _audioSource.Stop();
     }
 }
