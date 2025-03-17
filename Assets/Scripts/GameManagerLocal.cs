@@ -83,7 +83,7 @@ public class GameManagerLocal : MonoBehaviour
         //_globalGameManager = GameObject.FindGameObjectWithTag("GameManagerGlobal").GetComponent<GameManager>();
         clockController = FindObjectOfType<ClockController>();
 
-       
+        StartCoroutine(nameof(CallActiveGame));
 
         // *** [Optional] You can get the minigame index or not
         //  gameIndex = _globalGameManager.GetMiniGameIndex();
@@ -107,12 +107,7 @@ public class GameManagerLocal : MonoBehaviour
         }
     }
     */
-    private void Update()
-    {
-        ActivarGame(clockController.GetElapsedTime()>10);
-      
-    }
-
+   
     /// <summary>
     /// Handle UpdateScore. [** Not necessary **]
     /// This method only handle the canvas button to update score to the player
@@ -276,6 +271,13 @@ public class GameManagerLocal : MonoBehaviour
 
     #endregion
 
+    
+   IEnumerator CallActiveGame()
+    {
+        ActivarGame(false);
+        yield return new WaitForSeconds(10f);
+        ActivarGame(true);
+    }
 
     private void ActivarGame(bool active)
     {
