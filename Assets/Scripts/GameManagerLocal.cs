@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,6 +6,16 @@ using UnityEngine;
 
 public class GameManagerLocal : MonoBehaviour
 {
+    [Header("Active Game")]
+    [SerializeField] private GameObject activePlayer;
+    [SerializeField] private GameObject activeBoss;
+    [SerializeField] private GameObject activeLuz;
+    [SerializeField] private GameObject activeTraps;
+    [SerializeField] private GameObject activeObjectPresent;
+    [SerializeField] private GameObject activeControlersPanel;
+    [SerializeField] private GameObject activePaticle;
+    [SerializeField] private GameObject activeSpawner;
+   
     [Header("Elements to handle the synchronization")]
 
     //TODO descomentar cuando este en linea
@@ -72,6 +83,8 @@ public class GameManagerLocal : MonoBehaviour
         //_globalGameManager = GameObject.FindGameObjectWithTag("GameManagerGlobal").GetComponent<GameManager>();
         clockController = FindObjectOfType<ClockController>();
 
+       
+
         // *** [Optional] You can get the minigame index or not
         //  gameIndex = _globalGameManager.GetMiniGameIndex();
        // titleText.text = $"Minijuego {gameIndex.ToString()}";
@@ -94,8 +107,12 @@ public class GameManagerLocal : MonoBehaviour
         }
     }
     */
+    private void Update()
+    {
+        ActivarGame(clockController.GetElapsedTime()>10);
+      
+    }
 
-    
     /// <summary>
     /// Handle UpdateScore. [** Not necessary **]
     /// This method only handle the canvas button to update score to the player
@@ -258,4 +275,18 @@ public class GameManagerLocal : MonoBehaviour
     */
 
     #endregion
+
+
+    private void ActivarGame(bool active)
+    {
+        activePlayer.SetActive(active);
+        activeBoss.SetActive(active);
+        activeLuz.SetActive(active);
+        activeTraps.SetActive(active);
+        activeObjectPresent.SetActive(active);
+        activeControlersPanel.SetActive(!active);
+        activePaticle.SetActive(active);
+        activeSpawner.SetActive(active);
+        
+    }
 }
