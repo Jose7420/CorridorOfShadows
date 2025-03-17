@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walkBoss_0
+      name: WalkBoss_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 18
-        width: 51
-        height: 93
+        x: 44
+        y: 43
+        width: 131
+        height: 237
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,104 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 023d14a1f8c24244cac1fc6c60da8c5d
-      internalID: 1725839237
+      spriteID: 40d1d343052a58340adce92c3320f2ad
+      internalID: 422764055
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walkBoss_1
+      name: WalkBoss_1
       rect:
         serializedVersion: 2
-        x: 152
-        y: 19
-        width: 51
-        height: 91
-      alignment: 9
-      pivot: {x: 0.3926948, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7177058ea847b6f4d8d5fe78643b91bc
-      internalID: -1262648474
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walkBoss_2
-      rect:
-        serializedVersion: 2
-        x: 279
-        y: 17
-        width: 73
-        height: 91
-      alignment: 9
-      pivot: {x: 0.38755023, y: 0.53436464}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8ce55e5402d0d9b45b144cff2a0ccf11
-      internalID: -840172005
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walkBoss_3
-      rect:
-        serializedVersion: 2
-        x: 407
-        y: 17
-        width: 82
-        height: 92
-      alignment: 9
-      pivot: {x: 0.3855907, y: 0.55098677}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d9514f15093f5244e9d4e75aa140990a
-      internalID: 646061013
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walkBoss_4
-      rect:
-        serializedVersion: 2
-        x: 543
-        y: 17
-        width: 73
-        height: 92
-      alignment: 9
-      pivot: {x: 0.3607763, y: 0.49575114}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 29ef9800e664fe340b56ac4d186161a2
-      internalID: 263112501
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walkBoss_5
-      rect:
-        serializedVersion: 2
-        x: 683
-        y: 17
-        width: 51
-        height: 93
+        x: 391
+        y: 50
+        width: 123
+        height: 228
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3697175ef579d584c85c0fc534d41be2
-      internalID: 1468034215
+      spriteID: f4506078deb951d4ea505e35b4c13989
+      internalID: -1449114221
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walkBoss_6
+      name: WalkBoss_2
       rect:
         serializedVersion: 2
-        x: 814
-        y: 17
-        width: 49
-        height: 93
+        x: 704
+        y: 43
+        width: 178
+        height: 231
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,8 +166,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd68eab81cfbd5e4ea3282c22c4c626b
-      internalID: -1337618247
+      spriteID: dc0cadaed87ee2543b071be595ae9f39
+      internalID: -196963934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WalkBoss_3
+      rect:
+        serializedVersion: 2
+        x: 1027
+        y: 43
+        width: 205
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bb077e91fea291408f5612dd92252a0
+      internalID: 226141789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WalkBoss_4
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 45
+        width: 191
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13e120eb8f3208e4f8e10f309dc8869d
+      internalID: 821393199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WalkBoss_5
+      rect:
+        serializedVersion: 2
+        x: 1708
+        y: 43
+        width: 131
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 946b4625f0a2ae046a4748ec6430024b
+      internalID: 1776261890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WalkBoss_6
+      rect:
+        serializedVersion: 2
+        x: 2029
+        y: 41
+        width: 133
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4c2f6d00c0438341be8b216c1e78653
+      internalID: 540146341
       vertices: []
       indices: 
       edges: []
@@ -267,13 +267,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      walkBoss_0: 1725839237
-      walkBoss_1: -1262648474
-      walkBoss_2: -840172005
-      walkBoss_3: 646061013
-      walkBoss_4: 263112501
-      walkBoss_5: 1468034215
-      walkBoss_6: -1337618247
+      WalkBoss_0: 422764055
+      WalkBoss_1: -1449114221
+      WalkBoss_2: -196963934
+      WalkBoss_3: 226141789
+      WalkBoss_4: 821393199
+      WalkBoss_5: 1776261890
+      WalkBoss_6: 540146341
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
