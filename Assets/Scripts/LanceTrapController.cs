@@ -8,10 +8,11 @@ public class LanceTrapController : MonoBehaviour
 {
     private AudioSource _audioSource;
     [SerializeField] private GameObject traps;
-
+    
+    
     private void Start()
     {
-        traps = GameObject.FindGameObjectWithTag("Lance");
+        //traps = GameObject.FindGameObjectWithTag("Lance");
         traps.SetActive(false);
         _audioSource = GetComponent<AudioSource>();
     }
