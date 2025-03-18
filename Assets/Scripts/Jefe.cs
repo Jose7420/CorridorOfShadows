@@ -55,6 +55,8 @@ public class Jefe : MonoBehaviour
         if (_life <= 0)
         {
             animator.SetTrigger("Death");
+            GameManagerLocal.Instance.AddPoints(15);
+            GameManagerLocal.Instance.StopGame();
             Death();
         }
     }

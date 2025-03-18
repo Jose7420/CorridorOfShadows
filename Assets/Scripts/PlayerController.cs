@@ -185,6 +185,7 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(float damage)
     {
         _life -= damage;
+        GameManagerLocal.Instance.RemovePoints(5);
 
         if (_life <= 0)
         {

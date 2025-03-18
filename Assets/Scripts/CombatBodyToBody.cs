@@ -110,7 +110,7 @@ private void OnDrawGizmos()
                 AcitveSound(_audioBoss);
                 collisionador.GetComponent<Jefe>().TakeDamage(_hitDamage);
                 // Debug.Log(collisionador.name);
-                GameManagerLocal.Instance.AddPoints(15);
+               
 
             }
             if (collisionador.CompareTag("Enemy"))

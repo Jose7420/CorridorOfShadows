@@ -291,4 +291,19 @@ public class GameManagerLocal : MonoBehaviour
         activeSpawner.SetActive(active);
         
     }
+    public void StopGame()
+    {
+        activePlayer.SetActive(false);
+        activeBoss.SetActive(false);
+        activeLuz.SetActive(false);
+        activeTraps.SetActive(false);
+        activeObjectPresent.SetActive(false);
+        activeControlersPanel.SetActive(false);
+        activePaticle.SetActive(false);
+        activeSpawner.SetActive(false);
+
+    }
+
+
+   
 }
