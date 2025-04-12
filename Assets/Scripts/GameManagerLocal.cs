@@ -16,6 +16,8 @@ public class GameManagerLocal : MonoBehaviour
     [SerializeField] private GameObject activePaticle;
     [SerializeField] private GameObject activeSpawner;
 
+
+
     [Header("Elements to handle the synchronization")]
 
     //TODO descomentar cuando este en linea
@@ -101,8 +103,9 @@ public class GameManagerLocal : MonoBehaviour
     /// </summary>
     void FixedUpdate()
     {
+        
         // *** [Optional] This only handle the end time to call EndGame method.
-        if ((clockController && clockController.IsEnd()) && !_isEndGame )
+        if ((clockController && clockController.IsEnd()) && !_isEndGame || Jefe.DeathBoss())
         {
             EndGame();
         }
@@ -162,8 +165,11 @@ public class GameManagerLocal : MonoBehaviour
         //scoreText.gameObject.SetActive(true);
 
         // Hide the canvas elements that you consider
-        Debug.Log("Finalizado el juego");
+        Debug.Log($"Finalizado el juego con {_score}" );
         StopGame();
+        //Time.timeScale=0;
+        
+       // StopGame();
        // GameObject.Find("Button End Game").gameObject.SetActive(false);
         //Debug.Log("[MiniJuego] Game Over");
 

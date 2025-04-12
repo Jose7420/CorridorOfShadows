@@ -19,6 +19,8 @@ public class Jefe : MonoBehaviour
     [SerializeField] private bool _lookToTheRight = true;
     [Header("Vida")]
     [SerializeField] private float _life;
+    private static bool _isDeath = false;
+
 
 
     [Header("Ataque")]
@@ -48,7 +50,7 @@ public class Jefe : MonoBehaviour
         if (transform.position.x < 83 || transform.position.x > 111)
         {
             // Cuando llege al limite posicionarlo fuera de este.
-            transform.position = new Vector2(transform.position.x < 85 ? 84: 109, 0); 
+            transform.position = new Vector2(transform.position.x < 85 ? 84 : 109, 0);
 
             // Girar al jefe 180 grados.
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
@@ -68,18 +70,21 @@ public class Jefe : MonoBehaviour
         {
             animator.SetTrigger("Death");
             GameManagerLocal.Instance.AddPoints(15);
-           // Death();
+            // Death();
             //GameManagerLocal.Instance.StopGame();
+            
             StartCoroutine(nameof(FinalizeGame));
         }
     }
 
-
+    
     private void Death()
     {
-        
+
         //Destroy(gameObject, 3.15f);
-        Destroy(gameObject, 3f);
+        _isDeath = true;
+        
+
     }
 
     public void MirarPlayer()
@@ -121,16 +126,23 @@ public class Jefe : MonoBehaviour
         Gizmos.DrawWireSphere(_attackController.position, _attackRadius);
     }
 
-    private IEnumerator FinalizeGame() {
+    private IEnumerator FinalizeGame()
+    {
 
         Debug.Log("Esta es la finalizeGAmem antes de parar el juego");
-        
-        yield return new WaitForSeconds(3f);
+
+        yield return new WaitForSeconds(3.15f);
         Debug.Log("finalizar juego");
-        GameManagerLocal.Instance.EndGame();
+        //GameManagerLocal.Instance.EndGame();
+       Death();
 
     }
 
+    
+    public static bool DeathBoss()
+    {
+        return _isDeath;
 
+    }
 
 }
