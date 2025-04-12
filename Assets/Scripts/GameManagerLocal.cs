@@ -15,17 +15,17 @@ public class GameManagerLocal : MonoBehaviour
     [SerializeField] private GameObject activeControlersPanel;
     [SerializeField] private GameObject activePaticle;
     [SerializeField] private GameObject activeSpawner;
-   
+
     [Header("Elements to handle the synchronization")]
 
     //TODO descomentar cuando este en linea
     // [SerializeField] private GameManager _globalGameManager;
 
     // Live table to view the all players scores
-   // [SerializeField]
-   // private GameObject rankingOnlineRowPrefab;
+    // [SerializeField]
+    // private GameObject rankingOnlineRowPrefab;
 
-   // [SerializeField] private GameObject rankingOnlineContainer;
+    // [SerializeField] private GameObject rankingOnlineContainer;
 
     // Chronometer
     [SerializeField] private ClockController clockController;
@@ -38,7 +38,7 @@ public class GameManagerLocal : MonoBehaviour
     [SerializeField] private GameObject rankingContainer;
     [SerializeField] private GameObject rankingMiniGameRowPrefab;
     */
-    
+
     /*
     [Header("Optional Elements")]
     // [Optional] Titles to show in base demo
@@ -48,7 +48,7 @@ public class GameManagerLocal : MonoBehaviour
     [SerializeField] private TextMeshProUGUI titleText;
     */
     [SerializeField] private TextMeshProUGUI scoreText;
-    
+
     // Private variables
     private bool _isEndGame;
     private int _score;
@@ -65,6 +65,7 @@ public class GameManagerLocal : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            
         }
         else
         {
@@ -82,32 +83,32 @@ public class GameManagerLocal : MonoBehaviour
         // *** [Important] Get the global game manager instance and your prefab variant Chronometer
         //_globalGameManager = GameObject.FindGameObjectWithTag("GameManagerGlobal").GetComponent<GameManager>();
         clockController = FindObjectOfType<ClockController>();
-
+        _isEndGame = false;
         StartCoroutine(nameof(CallActiveGame));
 
         // *** [Optional] You can get the minigame index or not
         //  gameIndex = _globalGameManager.GetMiniGameIndex();
-       // titleText.text = $"Minijuego {gameIndex.ToString()}";
+        // titleText.text = $"Minijuego {gameIndex.ToString()}";
 
         // *** [Important] This Invoke it is necessary to get the current ranking list of the global game manager.
-      //  InvokeRepeating("UpdateOnliveRanking", _startTime, _repeatRate);
+        //  InvokeRepeating("UpdateOnliveRanking", _startTime, _repeatRate);
     }
 
     // TODO descomentar cuando se conecte a online.
-    /*
+
     /// <summary>
     /// Method FixedUpdate
     /// </summary>
     void FixedUpdate()
     {
         // *** [Optional] This only handle the end time to call EndGame method.
-        if ((clockController && clockController.IsEnd()) && !_isEndGame)
+        if ((clockController && clockController.IsEnd()) && !_isEndGame )
         {
             EndGame();
         }
     }
-    */
-   
+
+
     /// <summary>
     /// Handle UpdateScore. [** Not necessary **]
     /// This method only handle the canvas button to update score to the player
@@ -120,13 +121,13 @@ public class GameManagerLocal : MonoBehaviour
         // game, you need call the command to synchronize with the Global
         // Game Manager
     }
-  
-    
+
+
 
     public void AddPoints(int points)
     {
         _score += points;
-        _score =(_score >50) ?50:_score;
+        _score = (_score > 50) ? 50 : _score;
         UpdateScore();
     }
 
@@ -137,10 +138,10 @@ public class GameManagerLocal : MonoBehaviour
         _score = (_score <= 0) ? 0 : _score;
         UpdateScore();
     }
-    
+
     //TODO Descomentar cuando este en linea
     #region EnGame
-    /*
+
     /// <summary>
     /// Method EndGame
     /// This method handles the end of the minigame. You can implement it in another way, but it is necessary to
@@ -161,20 +162,22 @@ public class GameManagerLocal : MonoBehaviour
         //scoreText.gameObject.SetActive(true);
 
         // Hide the canvas elements that you consider
-        GameObject.Find("Button End Game").gameObject.SetActive(false);
+        Debug.Log("Finalizado el juego");
+        StopGame();
+       // GameObject.Find("Button End Game").gameObject.SetActive(false);
         //Debug.Log("[MiniJuego] Game Over");
 
         // [Important] Send command to Global Game Manager with the player score 
-        _globalGameManager.CmdSetEndMiniGame(score);
+        // _globalGameManager.CmdSetEndMiniGame(score);
 
         // [Optional] Set a custom title for your minigame ranking
-        rankingTitleText.text = $"Ranking Minijuego {gameIndex.ToString()}";
+        // rankingTitleText.text = $"Ranking Minijuego {gameIndex.ToString()}";
 
         // [Maybe Important] Calling to get the final Ranking. If all players finish at the same time, it is not necessary
         // to make repeated invocations of the method and it will be enough to call it only once. 
-        InvokeRepeating("GetScores", 0, _repeatRate); // You can customize this
+        //InvokeRepeating("GetScores", 0, _repeatRate); // You can customize this
     }
-    */
+
     #endregion
 
     // TODO Descomentar cuando este en linea
@@ -271,8 +274,8 @@ public class GameManagerLocal : MonoBehaviour
 
     #endregion
 
-    
-   IEnumerator CallActiveGame()
+
+    IEnumerator CallActiveGame()
     {
         ActivarGame(false);
         yield return new WaitForSeconds(10f);
@@ -289,21 +292,22 @@ public class GameManagerLocal : MonoBehaviour
         activeControlersPanel.SetActive(!active);
         activePaticle.SetActive(active);
         activeSpawner.SetActive(active);
-        
+
     }
     public void StopGame()
     {
         activePlayer.SetActive(false);
-        activeBoss.SetActive(false);
+        if(activeBoss != null){ activeBoss.SetActive(false);}
         activeLuz.SetActive(false);
         activeTraps.SetActive(false);
         activeObjectPresent.SetActive(false);
         activeControlersPanel.SetActive(false);
         activePaticle.SetActive(false);
         activeSpawner.SetActive(false);
+       
 
     }
 
 
-   
+
 }

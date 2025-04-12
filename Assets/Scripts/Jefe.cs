@@ -42,8 +42,20 @@ public class Jefe : MonoBehaviour
     {
         float distanciaplayer = Vector2.Distance(transform.position, player.position);
         animator.SetFloat("DistanciaPlayer", distanciaplayer);
-        if (transform.position.x < 83 || transform.position.x >111 ) { transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0); }
-     
+
+        // comprobar que el jefe llegue a los limites y posicionarlo fuera del limite
+        // y rotarlo en para la otra posicion.
+        if (transform.position.x < 83 || transform.position.x > 111)
+        {
+            // Cuando llege al limite posicionarlo fuera de este.
+            transform.position = new Vector2(transform.position.x < 85 ? 84: 109, 0); 
+
+            // Girar al jefe 180 grados.
+            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
+
+
+        }
+
 
     }
 
@@ -56,15 +68,18 @@ public class Jefe : MonoBehaviour
         {
             animator.SetTrigger("Death");
             GameManagerLocal.Instance.AddPoints(15);
-            GameManagerLocal.Instance.StopGame();
-            Death();
+           // Death();
+            //GameManagerLocal.Instance.StopGame();
+            StartCoroutine(nameof(FinalizeGame));
         }
     }
 
 
     private void Death()
     {
-        Destroy(gameObject, 3.15f);
+        
+        //Destroy(gameObject, 3.15f);
+        Destroy(gameObject, 3f);
     }
 
     public void MirarPlayer()
@@ -74,7 +89,7 @@ public class Jefe : MonoBehaviour
         if (((player.position.x > transform.position.x) && !_lookToTheRight)
             || ((player.position.x < transform.position.x) && _lookToTheRight))
         {
-          //  Debug.Log($"Mirando hacia la derecha {_lookToTheRight}");
+            //  Debug.Log($"Mirando hacia la derecha {_lookToTheRight}");
 
             _lookToTheRight = !_lookToTheRight;
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
@@ -90,7 +105,7 @@ public class Jefe : MonoBehaviour
         Collider2D[] objetos = Physics2D.OverlapCircleAll(_attackController.position, _attackRadius);
         foreach (Collider2D objeto in objetos)
         {
-                Debug.Log(objeto.tag);
+            Debug.Log(objeto.tag);
             if (objeto.CompareTag("Player"))
             {
                 _attackSource.PlayOneShot(_attackClip);
@@ -106,7 +121,15 @@ public class Jefe : MonoBehaviour
         Gizmos.DrawWireSphere(_attackController.position, _attackRadius);
     }
 
+    private IEnumerator FinalizeGame() {
 
+        Debug.Log("Esta es la finalizeGAmem antes de parar el juego");
+        
+        yield return new WaitForSeconds(3f);
+        Debug.Log("finalizar juego");
+        GameManagerLocal.Instance.EndGame();
+
+    }
 
 
 
