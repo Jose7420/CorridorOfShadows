@@ -7111,7 +7111,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.7517538, y: 3.7686176, z: -19.3}
+  m_LocalPosition: {x: -1.7491941, y: 3.7686038, z: -19.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -126542,7 +126542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8098093797158348300, guid: 637c62f80fa80de49a79f5105f947898, type: 3}
       propertyPath: totalTimeInMinutes
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -126661,7 +126661,7 @@ Transform:
   m_GameObject: {fileID: 1518826026}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.35, y: 0.32, z: 0}
+  m_LocalPosition: {x: 3.13, y: 0.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -131558,7 +131558,7 @@ Transform:
   m_GameObject: {fileID: 1849858762}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.074309, y: 4.3716, z: -19.3}
+  m_LocalPosition: {x: -14.074336, y: 4.3716, z: -19.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -132265,7 +132265,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2068748338
 RectTransform:
   m_ObjectHideFlags: 0

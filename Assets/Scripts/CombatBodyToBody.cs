@@ -17,8 +17,8 @@ public class CombatBodyToBody : MonoBehaviour
     public bool IsActiveHit { get => _isActiveHit; }
 
     private AudioSource _audioSource;
-    [SerializeField]private AudioClip _audioBat;
-    [SerializeField]private AudioClip _audioBoss;
+    [SerializeField] private AudioClip _audioBat;
+    [SerializeField] private AudioClip _audioBoss;
 
 
     // Start is called before the first frame update
@@ -26,22 +26,9 @@ public class CombatBodyToBody : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _audioSource = GetComponent<AudioSource>();
-        
+
     }
-    /*
-    // Update is called once per frame
-    void Update()
-    {
-        //if (_TimeNextAttack > 0)
-        //{
-        //    _TimeNextAttack -= Time.deltaTime;
-        //}
-        //if (Input.GetKeyDown("b") && _TimeNextAttack <=  0)
-        //{
-        //    Golpe();
-        //    _TimeNextAttack = _timeBetweenAttack;
-        //}
-    }*/
+  
 
     public void TimeBetweenAttack()
     {
@@ -56,7 +43,6 @@ public class CombatBodyToBody : MonoBehaviour
     {
         if (_TimeNextAttack <= 0)
         {
-
             Hit();
             _TimeNextAttack = _timeBetweenAttack;
         }
@@ -66,24 +52,15 @@ public class CombatBodyToBody : MonoBehaviour
     private void Hit()
     {
         _animator.SetTrigger("Hit");
-       
-
-        Collider2D[] objects = Physics2D.OverlapCircleAll(_hitController.position, _hitRadius);
         StartCoroutine(MethodName);
-        StartCoroutine(LateHit(objects));
-
-
-
-
-
-
     }
 
-private void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(_hitController.position, _hitRadius);
     }
+
 
     private IEnumerator HitACtive()
     {
@@ -92,31 +69,30 @@ private void OnDrawGizmos()
         _isActiveHit = false;
     }
 
-    private IEnumerator LateHit(Collider2D[] objects)
+
+    // funcion que es llamada por la animacion de golpear.
+    private void CheckWhoHitsWho()
     {
-        yield return new WaitForSeconds(0.40f);
-        CheckWhoHitsWho(objects);
+        Collider2D[] objects = Physics2D.OverlapCircleAll(_hitController.position, _hitRadius);
 
-    }
-
-
-    private void CheckWhoHitsWho(Collider2D[] objects )
-    {
+        Debug.Log("dentro del checkWhoHitsWho");
         foreach (Collider2D collisionador in objects)
         {
-
+            if (collisionador == null) continue;
             if (collisionador.CompareTag("Jefe"))
             {
                 AcitveSound(_audioBoss);
                 collisionador.GetComponent<Jefe>().TakeDamage(_hitDamage);
-                // Debug.Log(collisionador.name);
-               
+                Debug.Log(collisionador.name);
+
 
             }
             if (collisionador.CompareTag("Enemy"))
             {
                 AcitveSound(_audioBat);
                 GameManagerLocal.Instance.AddPoints(5);
+                Debug.Log(collisionador.name);
+
                 Destroy(collisionador.gameObject);
 
             }
