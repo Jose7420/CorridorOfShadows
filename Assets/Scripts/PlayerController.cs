@@ -26,10 +26,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip _audioClip;
     private enum Jumping : ushort { up = 1 };
     private bool _hitPressed;
-
+    [SerializeField] private ParticleSystem dustFoot;
 
     private CombatBodyToBody _handToHandCombat;
-  
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
         _handToHandCombat = GetComponent<CombatBodyToBody>();
-       
+        _animator.SetBool("isStatic", true);
 
     }
 
@@ -56,10 +56,11 @@ public class PlayerController : MonoBehaviour
             _rigidbodyPlayer.velocity = Vector2.zero;
             _handToHandCombat.Stroke();
         }
-        else
+        else if(!_handToHandCombat.IsActiveHit)
         {
             _direction = _playerInput.actions["Movimientos"].ReadValue<Vector2>();
             _jump = _playerInput.actions["Jump"].ReadValue<float>();
+
 
         }
 
@@ -67,10 +68,20 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+
+
+
+        Debug.Log($"direcion x{_direction.x} y {_jump} ");
         if (!_handToHandCombat.IsActiveHit)
         {
+
             MovePlayer(_direction.x * _speed * Time.fixedDeltaTime);
         }
+
+
+
+
 
     }
 
@@ -108,16 +119,24 @@ public class PlayerController : MonoBehaviour
         if (_isGrounded && _jump == 0)
         {
             //Debug.Log($"La variable _jump es {_jump}");
-            //Debug.Log($"La variable _direction es {_direction}.");
+            Debug.Log($"La variable _direction es {_direction}.");
 
             FlipSprite(_direction.x);
+            //Debug.Log($"mover player {move}"); 
+            // dustFoot.Play();
+
+
 
             _animator.SetBool("isStatic", IsPlayerStatic(_direction.x));
             _animator.SetBool("jump", false);
+            if(_direction.x != 0)  {dustFoot.Play();}
 
+            if(!_handToHandCombat.IsActiveHit){
             _rigidbodyPlayer.velocity = new Vector2(move, _rigidbodyPlayer.velocity.y);
             _rigidbodyPlayer.position = new Vector2(Mathf.Clamp(_rigidbodyPlayer.position.x, minX, maxX),
                 _rigidbodyPlayer.position.y);
+
+            }
         }
 
         JumpPlayer(move);
@@ -198,5 +217,5 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-   
+
 }

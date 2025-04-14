@@ -131,7 +131,7 @@ public class Jefe : MonoBehaviour
 
         Debug.Log("Esta es la finalizeGAmem antes de parar el juego");
 
-        yield return new WaitForSeconds(3.15f);
+        yield return new WaitForSeconds(4f);
         Debug.Log("finalizar juego");
         //GameManagerLocal.Instance.EndGame();
        Death();
