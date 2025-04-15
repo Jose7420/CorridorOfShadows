@@ -19,7 +19,7 @@ public class CombatBodyToBody : MonoBehaviour
     private AudioSource _audioSource;
     [SerializeField] private AudioClip _audioBat;
     [SerializeField] private AudioClip _audioBoss;
-
+    [SerializeField] private GameObject _batDeath;
 
     // Start is called before the first frame update
     void Start()
@@ -92,8 +92,11 @@ public class CombatBodyToBody : MonoBehaviour
                 AcitveSound(_audioBat);
                 GameManagerLocal.Instance.AddPoints(5);
                 Debug.Log(collisionador.name);
-
+                Instantiate(_batDeath,collisionador.transform.position, collisionador.transform.rotation);
+               // GameObject batDeath = Instantiate(_batDeath,collisionador.transform.position,Quaternion.identity);
+               // batDeath.GetComponent<ParticleSystem>().Play();
                 Destroy(collisionador.gameObject);
+               // Destroy(batDeath,1.8f);
 
             }
 
