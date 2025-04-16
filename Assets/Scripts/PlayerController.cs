@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour
             _rigidbodyPlayer.velocity = Vector2.zero;
 
             // dar un impulso horizontal y vertical.
-            _rigidbodyPlayer.AddForce(new Vector2(move * .75f, (int)Jumping.up * _jumpForce), ForceMode2D.Impulse);
+            _rigidbodyPlayer.AddForce(new Vector2(move * .85f, (int)Jumping.up * _jumpForce), ForceMode2D.Impulse);
 
             _animator.SetBool("isStatic", true);
             _animator.SetBool("jump", true);
