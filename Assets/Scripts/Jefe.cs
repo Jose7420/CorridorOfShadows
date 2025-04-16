@@ -47,10 +47,10 @@ public class Jefe : MonoBehaviour
 
         // comprobar que el jefe llegue a los limites y posicionarlo fuera del limite
         // y rotarlo en para la otra posicion.
-        if (transform.position.x < 83 || transform.position.x > 111)
+        if (transform.position.x < 83 || transform.position.x > 113)
         {
             // Cuando llege al limite posicionarlo fuera de este.
-            transform.position = new Vector2(transform.position.x < 85 ? 84 : 109, 0);
+            transform.position = new Vector3(transform.position.x < 85 ? 84 : 112, transform.position.y,transform.position.z);
 
             // Girar al jefe 180 grados.
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
