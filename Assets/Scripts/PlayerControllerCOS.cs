@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerControllerCOS : MonoBehaviour
 {
     private PlayerInput _playerInput;
     private Rigidbody2D _rigidbodyPlayer;

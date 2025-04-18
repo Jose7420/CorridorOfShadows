@@ -114,7 +114,7 @@ public class Jefe : MonoBehaviour
             if (objeto.CompareTag("Player"))
             {
                 _attackSource.PlayOneShot(_attackClip);
-                objeto.GetComponent<PlayerController>().TakeDamage(_damage);
+                objeto.GetComponent<PlayerControllerCOS>().TakeDamage(_damage);
             }
         }
     }
