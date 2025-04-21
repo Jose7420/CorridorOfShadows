@@ -12,8 +12,8 @@ public class PlayerControllerCOS : MonoBehaviour
     private Vector2 _direction;
     private float _jump;
 
-    [SerializeField] private float _speed = 500;
-    [SerializeField] private float _jumpForce = 14.5f;//12f;//10f;
+    [SerializeField] private float _speed = 500f;
+    [SerializeField] private float _jumpForce = 15f;
     private bool _isGrounded;
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
@@ -21,8 +21,8 @@ public class PlayerControllerCOS : MonoBehaviour
     [SerializeField] private float minX = -15.7f;
     [SerializeField] private float maxX = 114.5f; //74f;
 
-    [SerializeField] private float _damage = 10;
-    [SerializeField] private float _life = 50;
+    [SerializeField] private float _damage = 10f;
+    [SerializeField] private float _life = 50f;
     [SerializeField] private AudioClip _audioClip;
     private enum Jumping : ushort { up = 1 };
     private bool _hitPressed;
@@ -185,12 +185,20 @@ public class PlayerControllerCOS : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Comprobar que el player esta en el suelo y esta estatico.
+    /// Si se a pulsado la tecla de agacharse le cambia la posicion en y
+    /// y activa la animacion del agacharse. 
+    /// </summary>
+
     private void IsDown()
     {
         if (_isGrounded && IsPlayerStatic(_direction.x))
         {
             bool isDown = _downPressed;
+
             _rigidbodyPlayer.velocity = Vector2.zero;
+
             if (isDown) { PlayerPosition(); }
 
             _animator.SetBool("Down", isDown);
@@ -200,6 +208,10 @@ public class PlayerControllerCOS : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Metdodo que cambia la posicion en {Y} manteniendo la posiciones {X} y {Z} en la misma posicion 
+    /// de la que tenia.
+    /// </summary>
     public void PlayerPosition()
     {
         transform.position = new Vector3(transform.position.x, _posicionYPlayerDown, transform.position.z);

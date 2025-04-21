@@ -6,9 +6,9 @@ using UnityEngine;
 public class CombatBodyToBody : MonoBehaviour
 {
     [SerializeField] private Transform _hitController;
-    [SerializeField] private float _hitRadius;
-    [SerializeField] private float _hitDamage;
-    [SerializeField] private float _timeBetweenAttack;
+    [SerializeField] private float _hitRadius =3.25f;
+    [SerializeField] private float _hitDamage =20f;
+    [SerializeField] private float _timeBetweenAttack = 0.5f;
     [SerializeField] private float _TimeNextAttack;
     [SerializeField] private bool _isActiveHit;
 

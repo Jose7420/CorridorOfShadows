@@ -17,19 +17,23 @@ public class Jefe : MonoBehaviour
 
     // private CombatBodyToBody _combatBodyTobody;
     [SerializeField] private bool _lookToTheRight = true;
+
     [Header("Vida")]
-    [SerializeField] private float _life;
+    [SerializeField] private float _life = 150f;
     private static bool _isDeath = false;
 
 
 
     [Header("Ataque")]
     [SerializeField] private Transform _attackController;
-    [SerializeField] private float _attackRadius;
-    [SerializeField] private float _damage;
+    [SerializeField] private float _attackRadius = 2.36f;
+    [SerializeField] private float _damage = 10f;
 
     [SerializeField] AudioClip _attackClip;
     private AudioSource _attackSource;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +54,7 @@ public class Jefe : MonoBehaviour
         if (transform.position.x < 83 || transform.position.x > 113)
         {
             // Cuando llege al limite posicionarlo fuera de este.
-            transform.position = new Vector3(transform.position.x < 85 ? 84 : 112, transform.position.y,transform.position.z);
+            transform.position = new Vector3(transform.position.x < 85 ? 84 : 112, transform.position.y, transform.position.z);
 
             // Girar al jefe 180 grados.
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
@@ -61,6 +65,12 @@ public class Jefe : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Reduce la vida segun la cantidad de daño recibido.
+    /// Si la vida llega a cero, activa la animacion de "Muerte",
+    /// otorgan puntos al player y comienza el proceso de finalizacion del juego.
+    /// </summary>
+    /// <param name="damage">Cantidad de daño que se aplicara al Jefe.</param>
 
     public void TakeDamage(float damage)
     {
@@ -72,21 +82,27 @@ public class Jefe : MonoBehaviour
             GameManagerLocal.Instance.AddPoints(15);
             // Death();
             //GameManagerLocal.Instance.StopGame();
-            
+
             StartCoroutine(nameof(FinalizeGame));
         }
     }
 
-    
+
+
     private void Death()
     {
 
         //Destroy(gameObject, 3.15f);
         _isDeath = true;
-        
+
 
     }
 
+    /// <summary>
+    /// Comprobar si el Jefe esta mirando al player 
+    /// en la distancia establecida y sino lo esta
+    /// se gira para esta enfrente de el.
+    /// </summary>
     public void MirarPlayer()
     {
 
@@ -104,9 +120,13 @@ public class Jefe : MonoBehaviour
 
 
 
-
+    /// <summary>
+    /// Comprobar cuando se golpea el player esta dentro de ese radio de ataque.
+    /// si esta se le quitara puntos y se activara el sonido del golpe.
+    /// </summary>
     public void Stoke()
     {
+
         Collider2D[] objetos = Physics2D.OverlapCircleAll(_attackController.position, _attackRadius);
         foreach (Collider2D objeto in objetos)
         {
@@ -126,6 +146,10 @@ public class Jefe : MonoBehaviour
         Gizmos.DrawWireSphere(_attackController.position, _attackRadius);
     }
 
+    /// <summary>
+    /// Corrutina para indicar el fin del juego.
+    /// </summary>
+    /// <returns>la muerte del jefe</returns>
     private IEnumerator FinalizeGame()
     {
 
@@ -134,11 +158,16 @@ public class Jefe : MonoBehaviour
         yield return new WaitForSeconds(4f);
         Debug.Log("finalizar juego");
         //GameManagerLocal.Instance.EndGame();
-       Death();
+        Death();
 
     }
 
-    
+    /// <summary>
+    /// Metodo estatico para saber si esta muerto.
+    /// para que el gameManagerLocal pueda comprobar si esta
+    /// muerto el jefe.
+    /// </summary>
+    /// <returns></returns>
     public static bool DeathBoss()
     {
         return _isDeath;
