@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class GameManagerLocal : MonoBehaviour
 {
@@ -15,8 +17,9 @@ public class GameManagerLocal : MonoBehaviour
     [SerializeField] private GameObject activeControlersPanel;
     [SerializeField] private GameObject activePaticle;
     [SerializeField] private GameObject activeSpawner;
+    [SerializeField] private GameObject activePanelFinalGame;
 
-
+   // private TextMeshProUGUI finalGameText;
 
     [Header("Elements to handle the synchronization")]
 
@@ -86,6 +89,9 @@ public class GameManagerLocal : MonoBehaviour
         //_globalGameManager = GameObject.FindGameObjectWithTag("GameManagerGlobal").GetComponent<GameManager>();
         clockController = FindObjectOfType<ClockController>();
         _isEndGame = false;
+       // finalGameText = activePanelFinalGame.GetComponentInChildren<TextMeshProUGUI>();
+        //finalGameText.text = "Prueba";
+
         StartCoroutine(nameof(CallActiveGame));
 
         // *** [Optional] You can get the minigame index or not
@@ -166,6 +172,9 @@ public class GameManagerLocal : MonoBehaviour
 
         // Hide the canvas elements that you consider
         Debug.Log($"Finalizado el juego con {_score}" );
+        //finalGameText.text = _score.ToString();
+        activePanelFinalGame.GetComponentInChildren<TextMeshProUGUI>().text = "Final Score: " + _score.ToString();
+
         StopGame();
         //Time.timeScale=0;
         
@@ -298,6 +307,7 @@ public class GameManagerLocal : MonoBehaviour
         activeControlersPanel.SetActive(!active);
         activePaticle.SetActive(active);
         activeSpawner.SetActive(active);
+        activePanelFinalGame.SetActive(false);
 
     }
     public void StopGame()
@@ -310,10 +320,18 @@ public class GameManagerLocal : MonoBehaviour
         activeControlersPanel.SetActive(false);
         activePaticle.SetActive(false);
         activeSpawner.SetActive(false);
-       
+        activePanelFinalGame.SetActive(true);
+
+
 
     }
 
+
+    public void QuitGame()
+    {
+        Debug.Log("QuitGame");
+        Application.Quit();
+    }
 
 
 }
