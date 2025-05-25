@@ -7297,7 +7297,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.7568264, y: 3.7686496, z: -19.3}
+  m_LocalPosition: {x: -1.7419415, y: 3.7685657, z: -19.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8607,7 +8607,7 @@ GameObject:
   - component: {fileID: 834000824}
   - component: {fileID: 834000823}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ImageStick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112182,6 +112182,8 @@ MonoBehaviour:
   activePaticle: {fileID: 99097983}
   activeSpawner: {fileID: 786236510}
   activePanelFinalGame: {fileID: 640725207}
+  activePanelBotonera: {fileID: 1953441658}
+  activeImagenStick: {fileID: 834000821}
   clockController: {fileID: 0}
   scoreText: {fileID: 36752886}
 --- !u!4 &1705994555
@@ -113209,7 +113211,7 @@ Transform:
   m_GameObject: {fileID: 1849858762}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.074397, y: 4.3916, z: -19.3}
+  m_LocalPosition: {x: -14.074278, y: 4.3916, z: -19.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -113850,7 +113852,7 @@ GameObject:
   - component: {fileID: 1953441661}
   - component: {fileID: 1953441660}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: PanelBotonera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

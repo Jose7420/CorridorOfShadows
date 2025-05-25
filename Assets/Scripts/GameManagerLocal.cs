@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
+
 public class GameManagerLocal : MonoBehaviour
 {
     [SerializeField] private PlayerInput _playerInput;
@@ -21,6 +22,9 @@ public class GameManagerLocal : MonoBehaviour
     [SerializeField] private GameObject activePaticle;
     [SerializeField] private GameObject activeSpawner;
     [SerializeField] private GameObject activePanelFinalGame;
+    [SerializeField] private GameObject activePanelBotonera;
+    [SerializeField] private GameObject activeImagenStick;
+        
 
     // private TextMeshProUGUI finalGameText;
 
@@ -318,8 +322,9 @@ public class GameManagerLocal : MonoBehaviour
         activePaticle.SetActive(active);
         activeSpawner.SetActive(active);
         activePanelFinalGame.SetActive(false);
-
-    }
+        activePanelBotonera.SetActive(active);
+        activeImagenStick.SetActive(active);
+            }
     public void StopGame()
     {
         activePlayer.SetActive(false);
@@ -331,6 +336,8 @@ public class GameManagerLocal : MonoBehaviour
         activePaticle.SetActive(false);
         activeSpawner.SetActive(false);
         activePanelFinalGame.SetActive(true);
+        activePanelBotonera.SetActive(false);
+        activeImagenStick.gameObject.SetActive(false);
 
 
 
