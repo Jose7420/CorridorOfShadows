@@ -33,15 +33,17 @@ public class PlayerControllerCOS : MonoBehaviour
     [SerializeField] private float _posicionYPlayerDown = -1.44f;
     [SerializeField] private float _posicionYPlayer = -0.2f;
 
+
     // Start is called before the first frame update
     void Start()
     {
-        _playerInput = GetComponent<PlayerInput>();
+        //_playerInput = GetComponent<PlayerInput>();
         _rigidbodyPlayer = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
         _handToHandCombat = GetComponent<CombatBodyToBody>();
         _animator.SetBool("isStatic", true);
+        _playerInput = GameManagerLocal.Instance.GetPlayerInput();
 
     }
 
@@ -62,11 +64,11 @@ public class PlayerControllerCOS : MonoBehaviour
         }
         else if (!_handToHandCombat.IsActiveHit)
         {
-           
-                _direction = _playerInput.actions["Movimientos"].ReadValue<Vector2>();
-                _jump = _playerInput.actions["Jump"].ReadValue<float>();
-            
-            
+
+            _direction = _playerInput.actions["Movimientos"].ReadValue<Vector2>();
+            _jump = _playerInput.actions["Jump"].ReadValue<float>();
+
+
 
         }
 
@@ -81,7 +83,7 @@ public class PlayerControllerCOS : MonoBehaviour
 
 
 
-        Debug.Log($"direcion x{_direction.x} y {_jump} ");
+        // Debug.Log($"direcion x{_direction.x} y {_jump} ");
         if (!_handToHandCombat.IsActiveHit)
         {
 
@@ -137,7 +139,7 @@ public class PlayerControllerCOS : MonoBehaviour
             // dustFoot.Play();
 
             IsDown();
-           
+
 
             _animator.SetBool("isStatic", IsPlayerStatic(_direction.x));
             _animator.SetBool("jump", false);
@@ -167,7 +169,7 @@ public class PlayerControllerCOS : MonoBehaviour
     /// </summary>
     private void JumpPlayer(float move)
     {
-        if (_jump == 1 && _isGrounded )
+        if (_jump == 1 && _isGrounded)
         {
 
             _isGrounded = false;

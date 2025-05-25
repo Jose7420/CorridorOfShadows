@@ -4,10 +4,13 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class GameManagerLocal : MonoBehaviour
 {
+    [SerializeField] private PlayerInput _playerInput;
+
     [Header("Active Game")]
     [SerializeField] private GameObject activePlayer;
     [SerializeField] private GameObject activeBoss;
@@ -19,7 +22,7 @@ public class GameManagerLocal : MonoBehaviour
     [SerializeField] private GameObject activeSpawner;
     [SerializeField] private GameObject activePanelFinalGame;
 
-   // private TextMeshProUGUI finalGameText;
+    // private TextMeshProUGUI finalGameText;
 
     [Header("Elements to handle the synchronization")]
 
@@ -70,7 +73,9 @@ public class GameManagerLocal : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            
+            _playerInput = GetComponent<PlayerInput>();
+
+
         }
         else
         {
@@ -89,7 +94,7 @@ public class GameManagerLocal : MonoBehaviour
         //_globalGameManager = GameObject.FindGameObjectWithTag("GameManagerGlobal").GetComponent<GameManager>();
         clockController = FindObjectOfType<ClockController>();
         _isEndGame = false;
-       // finalGameText = activePanelFinalGame.GetComponentInChildren<TextMeshProUGUI>();
+        // finalGameText = activePanelFinalGame.GetComponentInChildren<TextMeshProUGUI>();
         //finalGameText.text = "Prueba";
 
         StartCoroutine(nameof(CallActiveGame));
@@ -109,12 +114,14 @@ public class GameManagerLocal : MonoBehaviour
     /// </summary>
     void FixedUpdate()
     {
-        
         // *** [Optional] This only handle the end time to call EndGame method.
         if ((clockController && clockController.IsEnd()) && !_isEndGame || Jefe.DeathBoss())
         {
-            EndGame();
-        }
+
+            EndGame();           
+
+            
+        }else if ((_playerInput?.actions["QuitGame"].IsPressed() ?? false ) && _isEndGame) { QuitGame(); }
     }
 
 
@@ -171,15 +178,18 @@ public class GameManagerLocal : MonoBehaviour
         //scoreText.gameObject.SetActive(true);
 
         // Hide the canvas elements that you consider
-        Debug.Log($"Finalizado el juego con {_score}" );
+        Debug.Log($"Finalizado el juego con {_score}");
         //finalGameText.text = _score.ToString();
         activePanelFinalGame.GetComponentInChildren<TextMeshProUGUI>().text = "Final Score: " + _score.ToString();
 
         StopGame();
+        Debug.Log($"Input Player {_playerInput?.actions["QuitGame"].IsPressed() ?? false}");
+        if (_playerInput?.actions["QuitGame"].IsPressed() ?? false) { QuitGame(); }
+
         //Time.timeScale=0;
-        
-       // StopGame();
-       // GameObject.Find("Button End Game").gameObject.SetActive(false);
+
+        // StopGame();
+        // GameObject.Find("Button End Game").gameObject.SetActive(false);
         //Debug.Log("[MiniJuego] Game Over");
 
         // [Important] Send command to Global Game Manager with the player score 
@@ -313,7 +323,7 @@ public class GameManagerLocal : MonoBehaviour
     public void StopGame()
     {
         activePlayer.SetActive(false);
-        if(activeBoss != null){ activeBoss.SetActive(false);}
+        if (activeBoss != null) { activeBoss.SetActive(false); }
         activeLuz.SetActive(false);
         activeTraps.SetActive(false);
         activeObjectPresent.SetActive(false);
@@ -332,6 +342,16 @@ public class GameManagerLocal : MonoBehaviour
         Debug.Log("QuitGame");
         Application.Quit();
     }
+    /*
+    public void SetPlayerInput(PlayerInput input)
+    {
+        Debug.Log("Dentro de setPlayerIput");
+        _playerInput = input;
+    }
+    */
+
+    public PlayerInput GetPlayerInput() => _playerInput;
+
 
 
 }
